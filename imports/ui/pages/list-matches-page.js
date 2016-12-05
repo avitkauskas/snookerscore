@@ -1,0 +1,13 @@
+import { Template } from 'meteor/templating';
+import { Matches } from '../../api/matches/matches.js';
+
+Template.List_matches_page.onCreated(function() {
+  this.subscribe('matches');
+});
+
+Template.List_matches_page.helpers({
+  matches() {
+    return Matches.find();
+    // return [{country: "Lithuania", city: "Vilnius"}];
+  },
+});

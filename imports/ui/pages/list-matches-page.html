@@ -1,0 +1,47 @@
+<template name="List_matches_page">
+    <div class="ui container">
+
+      {{#if Template.subscriptionsReady}}
+
+        <table class="ui table unstackable">
+          <thead>
+        		<tr>
+              <th>Place</th>
+        		  <th>Event</th>
+        		  <th class="single line center aligned">Date &amp; Time</th>
+        		  <th colspan="3" class="single line center aligned">Match &amp; Score</th>
+        		  <th></th>
+        		</tr>
+        	</thead>
+          <tbody>
+              {{#each match in matches}}
+                <tr>
+              		<td><i class="{{toLowerCase match.country}} flag"></i>{{match.country}}, {{match.city}} - {{match.venue}}</td>
+              		<td>{{match.event}}</td>
+              		<td class="center aligned">{{match.datetime}}</td>
+              		<td class="right aligned">{{match.player1}}</td>
+              		<td class="single line center aligned">
+                    <strong>0</strong>
+              			<small>({{match.frames}})</small>
+              			<strong>0</strong>
+              		</td>
+              		<td class="left aligned">{{match.player2}}</td>
+              		<td class="single line"> <a href="#">View</a>
+              			<!-- if isowner -->
+              				| <a href="#">Edit</a>
+              				| <a href="#">Score</a>
+              			<!-- /if %> -->
+              		</td>
+              	</tr>
+              {{/each}}
+          </tbody>
+        </table>
+
+      {{else}}
+          <div class="ui active inverted dimmer">
+            <div class="ui text loader">Loading</div>
+          </div>
+      {{/if}}
+
+    </div>
+</template>
