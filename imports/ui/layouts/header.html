@@ -2,8 +2,8 @@
     <div class="ui top fixed borderless menu">
       <div class="ui container">
         <a class="item" href="{{pathFor 'Home_page'}}"><h1>SnookerScore</h1></a>
-        <a class="{{ isActiveRoute 'Home_page'}} item" href="{{ pathFor 'Home_page' }}">All Matches</a>
         {{#if currentUser}}
+        <a class="{{ isActiveRoute 'Home_page'}} item" href="{{ pathFor 'Home_page' }}">All Matches</a>
         <a class="{{ isActiveRoute 'New_match_page'}} item" href="{{ pathFor 'New_match_page' }}">New Match</a>
         {{/if}}
         <div class="right menu">

@@ -14,3 +14,10 @@ FlowRouter.route('/matches/new', {
     BlazeLayout.render('Main_layout', { main: 'New_match_page' });
   },
 });
+
+FlowRouter.route('/matches/edit/:id', {
+  name: 'Edit_match_page',
+  action() {
+    BlazeLayout.render('Main_layout', { main: 'Edit_match_page' });
+  },
+});

@@ -1,0 +1,53 @@
+<template name="Edit_match_page">
+  <div class="ui centered grid">
+    <div class="ui eight wide column">
+      <form id="update-form" class="ui form">
+        <div class="two fields">
+          <div class="field">
+            <label>Country</label>
+            <input type="text" name="country" value={{match.country}}>
+          </div>
+          <div class="field">
+            <label>City</label>
+            <input type="text" name="city" value={{match.city}}>
+          </div>
+        </div>
+        <div class="two fields">
+          <div class="field">
+            <label>Venue</label>
+            <input type="text" name="venue" value={{match.venue}}>
+          </div>
+          <div class="field">
+            <label>Event</label>
+            <input type="text" name="event" value={{match.event}}>
+          </div>
+        </div>
+        <div class="two fields">
+          <div class="field">
+            <label>Date &amp; Time</label>
+            <input type="text" name="datetime" value={{match.datetime}}>
+          </div>
+          <div class="field">
+            <label>Frames</label>
+            <input type="text" name="frames" value={{match.frames}}>
+          </div>
+        </div>
+        <div class="two fields">
+          <div class="field">
+            <label>Player 1</label>
+            <input type="text" name="player1" value={{match.player1}}>
+          </div>
+          <div class="field">
+            <label>Player 2</label>
+            <input type="text" name="player2" value={{match.player2}}>
+          </div>
+        </div>
+        <div class="ui hidden divider"></div>
+        <button id="update-button" class="ui big green button" type="submit">Update Match</button>
+        -- or --
+        <button id="delete-button" class="ui big red button">Delete Match</button>
+
+      </form>
+    </div>
+  </div>
+</template>

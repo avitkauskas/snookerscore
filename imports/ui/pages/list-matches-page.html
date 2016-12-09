@@ -27,10 +27,10 @@
               		</td>
               		<td class="left aligned">{{match.player2}}</td>
               		<td class="single line"> <a href="#">View</a>
-              			<!-- if isowner -->
-              				| <a href="#">Edit</a>
+              			{{#if isOwner match.owner }}
+              				| <a href="{{ pathFor 'Edit_match_page' id=match._id}}">Edit</a>
               				| <a href="#">Score</a>
-              			<!-- /if %> -->
+              			{{/if}}
               		</td>
               	</tr>
               {{/each}}

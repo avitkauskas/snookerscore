@@ -1,51 +1,53 @@
 <template name="New_match_page">
-  <div class="ui container">
-    <form class="ui form">
-      <div class="two fields">
-        <div class="field">
-          <label>Country</label>
-          <input type="text" name="country" placeholder="United Kingdom">
+  <div class="ui centered grid">
+    <div class="ui eight wide column">
+      <form id="create-form" class="ui form">
+        <div class="two fields">
+          <div class="field">
+            <label>Country</label>
+            <input type="text" name="country" placeholder="United Kingdom">
+          </div>
+          <div class="field">
+            <label>City</label>
+            <input type="text" name="city" placeholder="Sheffield">
+          </div>
         </div>
-        <div class="field">
-          <label>City</label>
-          <input type="text" name="city" placeholder="Sheffield">
+        <div class="two fields">
+          <div class="field">
+            <label>Venue</label>
+            <input type="text" name="venue" placeholder="The Crucible Theatre">
+          </div>
+          <div class="field">
+            <label>Event</label>
+            <input type="text" name="event" placeholder="World Championship">
+          </div>
         </div>
-      </div>
-      <div class="two fields">
-        <div class="field">
-          <label>Venue</label>
-          <input type="text" name="venue" placeholder="The Crucible Theatre">
+        <div class="two fields">
+          <div class="field">
+            <label>Date &amp; Time</label>
+            <input type="text" name="datetime" placeholder="2017-04-17 10:00">
+          </div>
+          <div class="field">
+            <label>Frames</label>
+            <input type="text" name="frames" placeholder="35">
+          </div>
         </div>
-        <div class="field">
-          <label>Event</label>
-          <input type="text" name="event" placeholder="World Championship">
+        <div class="two fields">
+          <div class="field">
+            <label>Player 1</label>
+            <input type="text" name="player1" placeholder="Ronnie O'Sullivan">
+          </div>
+          <div class="field">
+            <label>Player 2</label>
+            <input type="text" name="player2" placeholder="Mark Selby">
+          </div>
         </div>
-      </div>
-      <div class="two fields">
-        <div class="field">
-          <label>Date &amp; Time</label>
-          <input type="text" name="datetime" placeholder="2017-04-17 10:00">
-        </div>
-        <div class="field">
-          <label>Frames</label>
-          <input type="text" name="frames" placeholder="35">
-        </div>
-      </div>
-      <div class="two fields">
-        <div class="field">
-          <label>Player 1</label>
-          <input type="text" name="player1" placeholder="Ronnie O'Sullivan">
-        </div>
-        <div class="field">
-          <label>Player 2</label>
-          <input type="text" name="player2" placeholder="Mark Selby">
-        </div>
-      </div>
-      <div style="padding-top: 25px"></div>
-      <button class="ui fluid big green button" type="submit">Create Match</button>
+        <div class="ui hidden divider"></div>
+        <button id="create-button" class="ui big green button" type="submit">Create Match</button>
 
-    </form>
-</div>
+      </form>
+    </div>
+  </div>
 </template>
 
 <template name="countries">
