@@ -3,11 +3,11 @@
       <div class="ui container">
         <a class="item" href="{{pathFor 'Home_page'}}"><h1>SnookerScore</h1></a>
         {{#if currentUser}}
-        <a class="{{ isActiveRoute 'Home_page'}} item" href="{{ pathFor 'Home_page' }}">All Matches</a>
-        <a class="{{ isActiveRoute 'New_match_page'}} item" href="{{ pathFor 'New_match_page' }}">New Match</a>
+        <a class="{{ isActiveRoute 'Home_page'}} item" href="{{ pathFor 'Home_page' }}"><i class="grid layout icon"></i>All Matches</a>
+        <a class="{{ isActiveRoute 'New_match_page'}} item" href="{{ pathFor 'New_match_page' }}"><i class="add square icon"></i>New Match</a>
         {{/if}}
         <div class="right menu">
-          <a href="#" class="item">{{> loginButtons }}</a>
+          <a href="#" class="item">{{> loginButtons align="right"}}</a>
         </div>
     </div>
   </div>

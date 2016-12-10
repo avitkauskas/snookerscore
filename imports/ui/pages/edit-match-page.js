@@ -31,8 +31,19 @@ Template.Edit_match_page.events({
   },
   'click #delete-button'(event, template) {
     event.preventDefault();
-    const id = FlowRouter.getParam("id");
-    Meteor.call('matches.remove', id);
-    FlowRouter.go('Home_page');
+    template.$('.ui.modal')
+      .modal({
+        detachable: false,
+        closable : true,
+        onDeny : function(){
+          return true;
+        },
+        onApprove : function() {
+          const id = FlowRouter.getParam("id");
+          Meteor.call('matches.remove', id);
+          FlowRouter.go('Home_page');
+        },
+      })
+      .modal('show');
   },
 });

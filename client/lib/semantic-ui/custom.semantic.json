@@ -10,7 +10,7 @@
     "colorize": false,
     "comment": false,
     "container": true,
-    "dimmer": false,
+    "dimmer": true,
     "divider": true,
     "dropdown": true,
     "embed": false,
@@ -47,7 +47,7 @@
     "sticky": false,
     "tab": false,
     "table": true,
-    "transition": false,
+    "transition": true,
     "visibility": false,
     "visit": false
   },
