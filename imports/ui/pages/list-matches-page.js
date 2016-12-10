@@ -9,7 +9,7 @@ Template.List_matches_page.onCreated(function() {
 
 Template.List_matches_page.helpers({
   matches() {
-    return Matches.find({}, {sort: {datetime: 1}});
+    return Matches.find({}, {sort: {datetime: -1}});
   },
   isOwner(owner) {
     return owner === Meteor.userId();
