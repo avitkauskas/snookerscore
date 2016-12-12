@@ -1,56 +1,58 @@
 <template name="New_match_page">
-  <div class="ui eight column grid container">
-    <div class="ui eight wide centered column">
-      <div class="ui raised segment">
-        <h2>Enter match data</h2>
-        <div class="ui divider"></div>
-        <form id="create-form" class="ui form">
-          <div class="two fields">
-            <div class="field">
-              <label>Country</label>
-              <input type="text" name="country">
-            </div>
-            <div class="field">
-              <label>City</label>
-              <input type="text" name="city">
-            </div>
-          </div>
-          <div class="two fields">
-            <div class="field">
-              <label>Venue</label>
-              <input type="text" name="venue">
-            </div>
-            <div class="field">
-              <label>Event</label>
-              <input type="text" name="event">
-            </div>
-          </div>
-          <div class="two fields">
-            <div class="field">
-              <label>Date &amp; Time</label>
-              <div class="ui calendar" id="datetime">
-                <input type="text" name="datetime">
+  <div id="cancel-catcher" tabindex="0" style="outline: none">
+    <div class="ui eight column grid container">
+      <div class="ui eight wide centered column">
+        <div class="ui raised segment">
+          <h2>Enter match data</h2>
+          <div class="ui divider"></div>
+          <form id="create-form" class="ui form">
+            <div class="two fields">
+              <div class="field">
+                <label>Country</label>
+                <input type="text" name="country">
+              </div>
+              <div class="field">
+                <label>City</label>
+                <input type="text" name="city">
               </div>
             </div>
-            <div class="field">
-              <label>Frames</label>
-              <input type="text" name="frames">
+            <div class="two fields">
+              <div class="field">
+                <label>Venue</label>
+                <input type="text" name="venue">
+              </div>
+              <div class="field">
+                <label>Event</label>
+                <input type="text" name="event">
+              </div>
             </div>
-          </div>
-          <div class="two fields">
-            <div class="field">
-              <label>Player 1</label>
-              <input type="text" name="player1">
+            <div class="two fields">
+              <div class="field">
+                <label>Date &amp; Time</label>
+                <div class="ui calendar" id="datetime">
+                  <input type="text" name="datetime">
+                </div>
+              </div>
+              <div class="field">
+                <label>Frames</label>
+                <input type="text" name="frames">
+              </div>
             </div>
-            <div class="field">
-              <label>Player 2</label>
-              <input type="text" name="player2">
+            <div class="two fields">
+              <div class="field">
+                <label>Player 1</label>
+                <input type="text" name="player1">
+              </div>
+              <div class="field">
+                <label>Player 2</label>
+                <input type="text" name="player2">
+              </div>
             </div>
-          </div>
-          <div class="ui center aligned basic segment">
-            <button id="create-button" class="ui big green button" type="submit"><i class="save icon"></i>Create Match</button>
-          </div>
-        </form>
+            <div class="ui center aligned basic segment">
+              <button id="create-button" class="ui big green button" type="submit"><i class="save icon"></i>Create Match</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>

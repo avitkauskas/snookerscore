@@ -15,6 +15,7 @@ Template.New_match_page.onRendered(function() {
     },
   });
   this.$("#datetime input").val('');
+  this.$("#cancel-catcher").focus();
 });
 
 Template.New_match_page.events({
@@ -23,5 +24,10 @@ Template.New_match_page.events({
     const match = template.$('#create-form').serializeJSON();
     Meteor.call('matches.insert', match);
     FlowRouter.go('Home_page');
+  },
+  'keydown #cancel-catcher'(event, template) {
+    if (event.keyCode == 27 && template.$('.ui.popup.calendar').is(":hidden")) {
+      FlowRouter.go('Home_page');
+    }
   },
 });

@@ -16,6 +16,11 @@ Template.Edit_match_page.onCreated(function() {
 });
 
 Template.Edit_match_page.onRendered(function() {
+  // check if the datetime was empty after render
+  let empty = false;
+  if (this.$("#datetime input").val() == '') {
+    empty = true;
+  }
   this.$("#datetime").calendar({
     firstDayOfWeek: 1,
     ampm: false,
@@ -25,6 +30,12 @@ Template.Edit_match_page.onRendered(function() {
       },
     },
   });
+  // reset the datetime field to empty if it was empty
+  // callendar set it to current time automatically if empty
+  if (empty) {
+    this.$("#datetime input").val('');
+  }
+  this.$("#cancel-catcher").focus();
 });
 
 Template.Edit_match_page.helpers({
@@ -54,9 +65,15 @@ Template.Edit_match_page.events({
         onApprove : function() {
           const id = FlowRouter.getParam("id");
           Meteor.call('matches.remove', id);
+          template.$('.ui.modal').modal('hide dimmer');
           FlowRouter.go('Home_page');
         },
       })
       .modal('show');
+  },
+  'keydown #cancel-catcher'(event, template) {
+    if (event.keyCode == 27 && template.$('.ui.popup.calendar').is(":hidden")) {
+      FlowRouter.go('Home_page');
+    }
   },
 });
