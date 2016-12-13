@@ -6,3 +6,6 @@ import './new-match-page.js';
 
 import './edit-match-page.html';
 import './edit-match-page.js';
+
+import './countries.html';
+import './countries.js';

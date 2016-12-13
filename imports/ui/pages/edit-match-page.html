@@ -4,16 +4,12 @@
       <div class="ui eight wide centered column">
         <div class="ui raised segment">
           <h2>Edit match data</h2>
-          <!-- <div class="ui vertical clearing segment">
-            <h2 class="ui left floated header">Edit match data</h2>
-            <h6 class="ui right floated header"><i class="close link icon"></i></h6>
-          </div> -->
           <div class="ui divider"></div>
           <form id="update-form" class="ui form">
             <div class="two fields">
               <div class="field">
                 <label>Country</label>
-                <input type="text" name="country" value={{match.country}}>
+                {{> countries }}
               </div>
               <div class="field">
                 <label>City</label>
