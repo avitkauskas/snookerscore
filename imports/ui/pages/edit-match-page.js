@@ -56,7 +56,7 @@ Template.Edit_match_page.helpers({
   match() {
     const id = FlowRouter.getParam("id");
     return Matches.findOne(id) || {};
-  },
+  }
 });
 
 
@@ -82,9 +82,10 @@ Template.Edit_match_page.events({
         onApprove : function() {
           const id = FlowRouter.getParam("id");
           Meteor.call('matches.remove', id);
+          template.$('.ui.modal').modal('hide');
           template.$('.ui.modal').modal('hide dimmer');
           FlowRouter.go('Home_page');
-        },
+        }
       })
       .modal('show');
   },
@@ -95,6 +96,6 @@ Template.Edit_match_page.events({
         && !template.$('#countries').hasClass("visible")) {
       FlowRouter.go('Home_page');
     }
-  },
+  }
 
 });

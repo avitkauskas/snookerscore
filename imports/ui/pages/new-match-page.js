@@ -12,8 +12,8 @@ Template.New_match_page.onRendered(function() {
     formatter: {
       datetime: function (date, settings) {
         return moment(date).format('YYYY-MM-DD HH:mm');
-      },
-    },
+      }
+    }
   });
 
   // reset the datetime field to empty

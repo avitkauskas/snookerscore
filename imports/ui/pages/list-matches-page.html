@@ -3,7 +3,12 @@
 
       {{#if Template.subscriptionsReady}}
 
-        <h1>All the mathes you can score and display</h1>
+        <h2 class="ui header">
+          <i class="grid layout icon"></i>
+          <div class="content">All Matches
+          <div class="sub header">Open the real-time score display by clicking the view action link</div>
+        </div>
+        </h2>
 
         <table class="ui table unstackable">
           <thead>
@@ -12,7 +17,7 @@
         		  <th>Event</th>
         		  <th class="single line center aligned">Date &amp; Time</th>
         		  <th colspan="3" class="single line center aligned">Match &amp; Score</th>
-        		  <th></th>
+        		  <th class="center aligned">Actions</th>
         		</tr>
         	</thead>
           <tbody>
@@ -23,15 +28,15 @@
               		<td class="center aligned">{{match.datetime}}</td>
               		<td class="right aligned">{{match.player1}}</td>
               		<td class="single line center aligned">
-                    <strong>0</strong>
+                    <strong>{{match.status.frames1}}</strong>
               			<small>({{match.frames}})</small>
-              			<strong>0</strong>
+              			<strong>{{match.status.frames2}}</strong>
               		</td>
               		<td class="left aligned">{{match.player2}}</td>
               		<td class="single line"> <a href="#">View</a>
               			{{#if isOwner match.owner }}
               				| <a href="{{ pathFor 'Edit_match_page' id=match._id}}">Edit</a>
-              				| <a href="#">Score</a>
+              				| <a href="{{ pathFor 'Score_match_page' id=match._id}}">Score</a>
               			{{/if}}
               		</td>
               	</tr>
