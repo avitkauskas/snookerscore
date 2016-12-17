@@ -9,53 +9,60 @@ import moment from 'moment';
 
 
 Template.Edit_match_page.onCreated(function() {
-  const self = this;
-  self.autorun(function() {
+  // this.autorun(() => {
     const id = FlowRouter.getParam('id');
-    self.subscribe('one_match', id);
-  });
+    this.subscribe('one_match', id);
+  // });
 });
 
 
 Template.Edit_match_page.onRendered(function() {
 
-  // check if the datetime was empty after render
-  let empty = false;
-  if (this.$("#datetime input").val() == '') {
-    empty = true;
-  }
+  this.autorun(() => {
+    if (this.subscriptionsReady()) {
 
-  // setup the calendar dropdown
-  this.$("#datetime").calendar({
-    firstDayOfWeek: 1,
-    ampm: false,
-    formatter: {
-      datetime: function (date, settings) {
-        return moment(date).format('YYYY-MM-DD HH:mm');
-      },
-    },
-  });
+      // check if the datetime was empty after render
+      let empty = false;
+      if (this.$("#datetime input").val() == '') {
+        empty = true;
+      }
 
-  // reset the datetime field to empty if it was empty
-  // callendar set it to current time automatically if empty
-  if (empty) {
-    this.$("#datetime input").val('');
-  }
+      // setup the calendar dropdown
+      this.$("#datetime").calendar({
+        firstDayOfWeek: 1,
+        ampm: false,
+        formatter: {
+          datetime: function (date, settings) {
+            return moment(date).format('YYYY-MM-DD HH:mm');
+          },
+        },
+      });
 
-  // set countries dropdown to current country value
-  const id = FlowRouter.getParam("id");
-  const match = Matches.findOne(id) || {};
-  this.$("#countries").dropdown('set selected', match.country);
+      // reset the datetime field to empty if it was empty
+      // callendar set it to current time automatically if empty
+      if (empty) {
+        this.$("#datetime input").val('');
+      }
+
+      // set countries dropdown to current country value
+      const id = FlowRouter.getParam("id");
+      const match = Matches.findOne(id) || {};
+      this.$("#countries").dropdown('set selected', match.country);
+
+    }
+  })
 
   // focus on outer div to be able to catch ESC keydown
   this.$("#cancel-catcher").focus();
+
 });
 
 
 Template.Edit_match_page.helpers({
   match() {
     const id = FlowRouter.getParam("id");
-    return Matches.findOne(id) || {};
+    const match = Matches.findOne(id) || {};
+    return match;
   }
 });
 
@@ -64,9 +71,9 @@ Template.Edit_match_page.events({
 
   'click #update-button'(event, template) {
     event.preventDefault();
-    const match = template.$('#update-form').serializeJSON();
+    const matchFields = template.$('#update-form').serializeJSON();
     const id = FlowRouter.getParam("id");
-    Meteor.call('matches.update', id, {$set: match});
+    Meteor.call('matches.update', id, matchFields);
     FlowRouter.go('Home_page');
   },
 

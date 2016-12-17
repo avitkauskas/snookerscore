@@ -1,6 +1,7 @@
 <template name="Edit_match_page">
   <div id="cancel-catcher" tabindex="0" style="outline: none">
     <div class="ui eight column grid container">
+      {{#with match}}
       <div class="ui eight wide centered column">
         <div class="ui raised segment">
           <h2>Edit match data</h2>
@@ -13,39 +14,39 @@
               </div>
               <div class="field">
                 <label>City</label>
-                <input type="text" name="city" value={{match.city}}>
+                <input type="text" name="city" value={{city}}>
               </div>
             </div>
             <div class="two fields">
               <div class="field">
                 <label>Venue</label>
-                <input type="text" name="venue" value={{match.venue}}>
+                <input type="text" name="venue" value={{venue}}>
               </div>
               <div class="field">
                 <label>Event</label>
-                <input type="text" name="event" value={{match.event}}>
+                <input type="text" name="event" value={{event}}>
               </div>
             </div>
             <div class="two fields">
               <div class="field">
                 <label>Date &amp; Time</label>
                 <div class="ui calendar" id="datetime">
-                  <input type="text" name="datetime" value={{match.datetime}}>
+                  <input type="text" name="datetime" value={{datetime}}>
                 </div>
               </div>
               <div class="field">
                 <label>Frames</label>
-                <input type="text" name="frames" data-value-type="number" value={{match.frames}}>
+                <input type="text" name="frames" data-value-type="number" value={{frames}}>
               </div>
             </div>
             <div class="two fields">
               <div class="field">
                 <label>Player 1</label>
-                <input type="text" name="player1" value={{match.player1}}>
+                <input type="text" name="players[]" value={{players.[0]}}>
               </div>
               <div class="field">
                 <label>Player 2</label>
-                <input type="text" name="player2" value={{match.player2}}>
+                <input type="text" name="players[]" value={{players.[1]}}>
               </div>
             </div>
             <div class="ui center aligned basic segment">
@@ -55,6 +56,14 @@
           </form>
         </div>
       </div>
+      {{/with}}
+
+      <!-- {{#unless Template.subscriptionsReady}}
+          <div class="ui active inverted dimmer">
+            <div class="ui text loader">Loading</div>
+          </div>
+      {{/unless}} -->
+
     </div>
   </div>
 

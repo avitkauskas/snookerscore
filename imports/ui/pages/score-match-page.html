@@ -1,32 +1,32 @@
 <template name="Score_match_page">
   <div class="ui container">
     {{#with match}}
-    <div class="ui padded grid">
+    <div class="ui padded middle aligned grid">
 
       <div class="row" style="background-color: rgba(0, 0, 0, 0.0470588);">
-        <div class="one wide middle aligned column">
-          <div id="playing1" class="ui small right aligned header" style="visibility: hidden;">
-            <i class="play icon"></i>
+        <div class="one wide column">
+          <div class="ui small right aligned header" >
+            <i class="play icon" style="visibility: {{playing1}};"></i>
           </div>
         </div>
-        <div id="player1" class="four wide middle aligned column">
+        <div id="player1" class="four wide column" style="cursor: pointer;">
           <div class="ui large right aligned header">
-            {{player1}}
+            {{players.[0]}}
           </div>
         </div>
         <div class="two wide center aligned column">
           <div class="ui small statistic">
             <div class="value">
-              {{status.score1}}
+              {{status.score.[0]}}
             </div>
           </div>
         </div>
         <div class="two wide center aligned column">
           <div class="ui mini statistic">
             <div class="value">
-              {{status.frames1}}
-              &nbsp;<small>({{frames}})</small>&nbsp;
-              {{status.frames2}}
+              {{status.frames.[0]}}
+              <small>({{frames}})</small>
+              {{status.frames.[1]}}
             </div>
             <div class="label">Frames</div>
           </div>
@@ -34,26 +34,43 @@
         <div class="two wide center aligned column">
           <div class="ui small statistic">
             <div class="value">
-              {{status.score2}}
+              {{status.score.[1]}}
             </div>
           </div>
         </div>
-        <div id="player2" class="four wide middle aligned column">
+        <div id="player2" class="four wide column" style="cursor: pointer;">
           <div class="ui left aligned large header">
-            {{player2}}
+            {{players.[1]}}
           </div>
         </div>
-        <div class="one wide middle aligned column">
-          <div id="playing2" class="ui small right aligned header" style="visibility: hidden;">
-            <i class="play flipped icon"></i>
+        <div class="one wide column">
+          <div class="ui small right aligned header">
+            <i class="play flipped icon" style="visibility: {{playing2}};"></i>
           </div>
         </div>
       </div>
 
-      <div class="three column row" style="background-color: rgb(249, 250, 251);">
-        <div class="seven wide middle aligned column">
+      {{#if no_player_to_break}}
+      <div class="row" style="background-color: rgb(249, 250, 251);">
+        <!-- to keep the hight of the row -->
+        <div class="two wide center aligned column" style="visibility: hidden;">
+          <div class="ui mini statistic">
+            <div class="value">0</div>
+            <div class="label">Break</div>
+          </div>
+        </div>
+        <div class="twelve wide column">
           <div class="ui center aligned small grey header">
-            16 points ahead, 65 remaining
+            Please click the name of the player to break in the first frame
+          </div>
+        </div>
+        <div class="two wide center aligned column"></div>
+      </div>
+      {{else}}
+      <div class="three column row" style="background-color: rgb(249, 250, 251);">
+        <div class="seven wide column">
+          <div id="message-left" class="ui center aligned small grey header">
+            <!--  -->
           </div>
         </div>
         <div class="two wide center aligned column">
@@ -66,12 +83,13 @@
             </div>
           </div>
         </div>
-        <div class="seven wide middle aligned column">
-          <div class="ui center aligned small grey header">
-            todo: message
+        <div class="seven wide column">
+          <div id="message-right" class="ui center aligned small grey header">
+            <!--  -->
           </div>
         </div>
       </div>
+      {{/if}}
 
     </div>
 
@@ -81,37 +99,37 @@
         <div class="twelve wide column">
           <div class="ui seven column grid">
             <div class="column">
-              <button id="red" class="ui circular massive red icon button">
+              <button id="red" class="ui circular massive red icon button" {{red_disabled}}>
                 <i class="bullseye icon"></i>
               </button>
             </div>
             <div class="column">
-              <button id="yellow" class="ui circular massive yellow icon button">
+              <button id="yellow" class="ui circular massive yellow icon button" {{yellow_disabled}}>
                 <i class="bullseye icon"></i>
               </button>
             </div>
             <div class="column">
-              <button id="green" class="ui circular massive green icon button">
+              <button id="green" class="ui circular massive green icon button" {{green_disabled}}>
                 <i class="bullseye icon"></i>
               </button>
             </div>
             <div class="column">
-              <button id="brown" class="ui circular massive brown icon button">
+              <button id="brown" class="ui circular massive brown icon button" {{brown_disabled}}>
                 <i class="bullseye icon"></i>
               </button>
             </div>
             <div class="column">
-              <button id="blue" class="ui circular massive blue icon button">
+              <button id="blue" class="ui circular massive blue icon button" {{blue_disabled}}>
                 <i class="bullseye icon"></i>
               </button>
             </div>
             <div class="column">
-              <button id="pink" class="ui circular massive pink icon button">
+              <button id="pink" class="ui circular massive pink icon button" {{pink_disabled}}>
                 <i class="bullseye icon"></i>
               </button>
             </div>
             <div class="column">
-              <button id="black" class="ui circular massive black icon button">
+              <button id="black" class="ui circular massive black icon button" {{black_disabled}}>
                 <i class="bullseye icon"></i>
               </button>
             </div>
@@ -120,11 +138,11 @@
         <div class="one wide column"></div>
         <div class="three wide middle aligned column">
           <div class="ui fluid buttons">
-            <button id="undo" class="ui button">
+            <button id="undo" class="ui button" {{undo_disabled}}>
               Undo
             </button>
             <div class="or" data-text="&"></div>
-            <button id="redo" class="ui grey button">
+            <button id="redo" class="ui grey button" {{redo_disabled}}>
               Redo
             </button>
           </div>
@@ -136,24 +154,24 @@
 
       <div class="six column center aligned row">
         <div class="three wide column">
-          <button id="break-off" class="ui large fluid button">
+          <button id="break-off" class="ui large fluid button" {{break_off_disabled}}>
             Break-off
           </button>
         </div>
         <div class="three wide column"></div>
         <div class="three wide column">
-          <button id="played-safe" class="ui large fluid button">
+          <button id="played-safe" class="ui large fluid button" {{played_safe_disabled}}>
             Played Safe
           </button>
         </div>
         <div class="three wide column">
-          <button id="missed-pot" class="ui large fluid button">
+          <button id="missed-pot" class="ui large fluid button" {{missed_pot_disabled}}>
             Missed Pot
           </button>
         </div>
         <div class="one wide column"></div>
         <div class="three wide column">
-          <button id="re-rack" class="ui large fluid button">
+          <button id="re-rack" class="ui large fluid button" {{re_rack_disabled}}>
             Re-rack
           </button>
         </div>
@@ -162,28 +180,28 @@
 
       <div class="six column center aligned row">
         <div class="three wide column">
-          <button id="foul4" class="ui large fluid button">
+          <button id="foul4" class="ui large fluid button" {{foul4_disabled}}>
             Foul 4
           </button>
         </div>
         <div class="three wide column">
-          <button id="foul5" class="ui large fluid button">
+          <button id="foul5" class="ui large fluid button" {{foul5_disabled}}>
             Foul 5
           </button>
         </div>
         <div class="three wide column">
-          <button id="foul6" class="ui large fluid button">
+          <button id="foul6" class="ui large fluid button" {{foul6_disabled}}>
             Foul 6
           </button>
         </div>
         <div class="three wide column">
-          <button id="foul7" class="ui large fluid button">
+          <button id="foul7" class="ui large fluid button" {{foul7_disabled}}>
             Foul 7
           </button>
         </div>
         <div class="one wide column"></div>
         <div class="three wide column">
-          <button id="frame-won" class="ui large olive fluid button">
+          <button id="frame-won" class="ui large olive fluid button" {{frame_won_disabled}}>
             Frame Won
           </button>
         </div>
@@ -191,34 +209,34 @@
 
       <div class="six column center aligned row">
         <div class="three wide column">
-          <button id="miss" class="ui large fluid button">
+          <button id="miss" class="ui large fluid button" {{miss_disabled}}>
             Miss
           </button>
         </div>
         <div class="three wide column">
-          <button id="free-ball" class="ui large fluid button">
+          <button id="free-ball" class="ui large fluid button" {{free_ball_disabled}}>
             Free Ball
           </button>
         </div>
         <div id="put-back" class="three wide column">
-          <button class="ui large fluid button">
+          <button class="ui large fluid button" {{put_back_disabled}}>
             Put Back
           </button>
         </div>
         <div class="three wide column">
-          <button id="play-again" class="ui large fluid button">
+          <button id="play-again" class="ui large fluid button" {{play_again_disabled}}>
             Play Again
           </button>
         </div>
         <div class="one wide column"></div>
         <div class="three wide column">
-          <button id="conceded" class="ui large orange fluid button">
+          <button id="conceded" class="ui large orange fluid button" {{conceded_disabled}}>
             Conceded
           </button>
         </div>
       </div>
 
     </div>
-    {{/with}}
+  {{/with}}
   </div>
 </template>

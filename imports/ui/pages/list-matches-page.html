@@ -1,8 +1,6 @@
 <template name="List_matches_page">
     <div class="ui container">
 
-      {{#if Template.subscriptionsReady}}
-
         <h2 class="ui header">
           <i class="grid layout icon"></i>
           <div class="content">All Matches
@@ -26,13 +24,13 @@
               		<td><i class="{{toLowerCase match.country}} flag"></i>{{match.country}}, {{match.city}} - {{match.venue}}</td>
               		<td>{{match.event}}</td>
               		<td class="center aligned">{{match.datetime}}</td>
-              		<td class="right aligned">{{match.player1}}</td>
+              		<td class="right aligned">{{match.players.[0]}}</td>
               		<td class="single line center aligned">
-                    <strong>{{match.status.frames1}}</strong>
+                    <strong>{{match.status.frames.[0]}}</strong>
               			<small>({{match.frames}})</small>
-              			<strong>{{match.status.frames2}}</strong>
+              			<strong>{{match.status.frames.[1]}}</strong>
               		</td>
-              		<td class="left aligned">{{match.player2}}</td>
+              		<td class="left aligned">{{match.players.[1]}}</td>
               		<td class="single line"> <a href="#">View</a>
               			{{#if isOwner match.owner }}
               				| <a href="{{ pathFor 'Edit_match_page' id=match._id}}">Edit</a>
@@ -44,11 +42,11 @@
           </tbody>
         </table>
 
-      {{else}}
-          <div class="ui active inverted dimmer">
-            <div class="ui text loader">Loading</div>
-          </div>
-      {{/if}}
+        <!-- {{#unless Template.subscriptionsReady}}
+            <div class="ui active inverted dimmer">
+              <div class="ui text loader">Loading</div>
+            </div>
+        {{/unless}} -->
 
     </div>
 </template>

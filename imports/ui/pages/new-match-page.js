@@ -42,6 +42,6 @@ Template.New_match_page.events({
         && !template.$('#countries').hasClass("visible")) {
       FlowRouter.go('Home_page');
     }
-  },
+  }
 
 });
