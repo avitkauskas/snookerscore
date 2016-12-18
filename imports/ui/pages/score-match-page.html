@@ -50,7 +50,7 @@
         </div>
       </div>
 
-      {{#if no_player_to_break}}
+      {{#if message_to_display}}
       <div class="row" style="background-color: rgb(249, 250, 251);">
         <!-- to keep the hight of the row -->
         <div class="two wide center aligned column" style="visibility: hidden;">
@@ -61,7 +61,7 @@
         </div>
         <div class="twelve wide column">
           <div class="ui center aligned small grey header">
-            Please click the name of the player to break in the first frame
+            {{message}}
           </div>
         </div>
         <div class="two wide center aligned column"></div>
@@ -158,7 +158,6 @@
             Break-off
           </button>
         </div>
-        <div class="three wide column"></div>
         <div class="three wide column">
           <button id="played-safe" class="ui large fluid button" {{played_safe_disabled}}>
             Played Safe
@@ -167,6 +166,11 @@
         <div class="three wide column">
           <button id="missed-pot" class="ui large fluid button" {{missed_pot_disabled}}>
             Missed Pot
+          </button>
+        </div>
+        <div class="three wide column">
+          <button id="red-lost" class="ui large fluid button" {{red_lost_disabled}}>
+            Red Lost
           </button>
         </div>
         <div class="one wide column"></div>

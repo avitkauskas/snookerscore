@@ -2,6 +2,13 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 
 export const Matches = new Mongo.Collection('Matches');
+export const INITIAL_STATUS = {
+  frames: [0, 0], score: [0, 0], break_points: 0,
+  player_at_the_table: null, player_to_break: null, frame_in_progress: false,
+  red: 15, yellow: 1, green: 1, brown: 1, blue: 1, pink: 1, black: 1,
+  foul: false, miss: false, free_ball: false,
+  colours_only: false, on_colour: false
+};
 
 Meteor.methods({
 
@@ -11,12 +18,7 @@ Meteor.methods({
       throw new Meteor.Error('not-authorized');
     }
     match.owner = this.userId;
-    match.status = {
-      frames: [0, 0], score: [0, 0], break_points: 0,
-      player_at_the_table: null, player_to_break: null,
-      red: 15, yellow: 1, green: 1, brown: 1, blue: 1, pink: 1, black: 1,
-      miss: false, free_ball: false, on_red: true
-    };
+    match.status = INITIAL_STATUS;
     Matches.insert(match);
   },
 

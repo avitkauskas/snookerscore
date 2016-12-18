@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 import { Meteor } from 'meteor/meteor';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
-import { Matches } from '../../api/matches/matches.js';
+import { Matches, INITIAL_STATUS } from '../../api/matches/matches.js';
 
 
 Template.Score_match_page.onCreated(function() {
@@ -19,8 +19,19 @@ Template.Score_match_page.helpers({
     return Matches.findOne(id) || {};
   },
 
-  no_player_to_break() {
-    if (this.status.player_to_break === null) {
+  message_to_display() {
+    let s = this.status;
+    if (!s) return false;
+    if (s.player_to_break === null) { // match did not start yet
+      this.message = "To start the match, please click the name of the player to break in the first frame";
+      return true;
+    } else if (s.frames[0] == (this.frames + 1) / 2 ||
+               s.frames[1] == (this.frames + 1) / 2) { // match finished
+      let winner = (s.frames[0] > s.frames[1]) ? this.players[0] : this.players[1];
+      this.message = "Match finished - " + winner + " won";
+      return true;
+    } else if (s.player_at_the_table === null) { // re-spotted black
+      this.message = "Re-spotted black - please click the name of the player to play next";
       return true;
     } else {
       return false;
@@ -28,7 +39,8 @@ Template.Score_match_page.helpers({
   },
 
   playing1() {
-    if (this.status.player_at_the_table === 0) {
+    let s = this.status;
+    if (s && s.player_at_the_table === 0) {
       return 'visible';
     } else {
       return 'hidden';
@@ -36,7 +48,8 @@ Template.Score_match_page.helpers({
   },
 
   playing2() {
-    if (this.status.player_at_the_table === 1) {
+    let s = this.status;
+    if (s && s.player_at_the_table === 1) {
       return 'visible';
     } else {
       return 'hidden';
@@ -44,161 +57,271 @@ Template.Score_match_page.helpers({
   },
 
   red_disabled() {
-    if (this.status.player_to_break === null) {
+    let s = this.status;
+    if (!s ||
+        !s.frame_in_progress ||
+        s.player_at_the_table === null ||
+        s.red < 1) {
       return 'disabled';
     }
     return '';
   },
 
   yellow_disabled() {
-    if (this.status.player_to_break === null) {
+    let s = this.status;
+    if (!s ||
+        !s.frame_in_progress ||
+        s.player_at_the_table === null ||
+        !s.on_colour ||
+        s.yellow < 1) {
       return 'disabled';
     }
     return '';
   },
 
   green_disabled() {
-    if (this.status.player_to_break === null) {
+    let s = this.status;
+    if (!s ||
+        !s.frame_in_progress ||
+        s.player_at_the_table === null ||
+        !s.on_colour ||
+        (s.colours_only && s.yellow > 0) ||
+        s.green < 1) {
       return 'disabled';
     }
     return '';
   },
 
   brown_disabled() {
-    if (this.status.player_to_break === null) {
+    let s = this.status;
+    if (!s ||
+        !s.frame_in_progress ||
+        s.player_at_the_table === null ||
+        !s.on_colour ||
+        (s.colours_only && s.green > 0) ||
+        s.brown < 1) {
       return 'disabled';
     }
     return '';
   },
 
   blue_disabled() {
-    if (this.status.player_to_break === null) {
+    let s = this.status;
+    if (!s ||
+        !s.frame_in_progress ||
+        s.player_at_the_table === null ||
+        !s.on_colour ||
+        (s.colours_only && s.brown > 0) ||
+        s.blue < 1) {
       return 'disabled';
     }
     return '';
   },
 
   pink_disabled() {
-    if (this.status.player_to_break === null) {
+    let s = this.status;
+    if (!s ||
+        !s.frame_in_progress ||
+        s.player_at_the_table === null ||
+        !s.on_colour ||
+        (s.colours_only && s.blue > 0) ||
+        s.pink < 1) {
       return 'disabled';
     }
     return '';
   },
 
   black_disabled() {
-    if (this.status.player_to_break === null) {
+    let s = this.status;
+    if (!s ||
+        !s.frame_in_progress ||
+        s.player_at_the_table === null ||
+        !s.on_colour ||
+        (s.colours_only && s.pink > 0) ||
+        s.black < 1) {
       return 'disabled';
     }
     return '';
   },
 
   break_off_disabled() {
-    if (this.status.player_to_break === null) {
+    let s = this.status;
+    if (!s ||
+        s.player_to_break === null ||
+        s.player_at_the_table === null ||
+        s.frame_in_progress ||
+        s.frames[0] == (this.frames + 1) / 2 ||
+        s.frames[1] == (this.frames + 1) / 2) {
       return 'disabled';
     }
     return '';
   },
 
   played_safe_disabled() {
-    if (this.status.player_to_break === null) {
+    let s = this.status;
+    if (!s ||
+        !s.frame_in_progress ||
+        s.player_at_the_table === null ||
+        s.black < 1) {
       return 'disabled';
     }
     return '';
   },
 
   missed_pot_disabled() {
-    if (this.status.player_to_break === null) {
+    let s = this.status;
+    if (!s ||
+        !s.frame_in_progress ||
+        s.player_at_the_table === null ||
+        s.black < 1) {
+      return 'disabled';
+    }
+    return '';
+  },
+
+  red_lost_disabled() {
+    let s = this.status;
+    if (!s ||
+        !s.frame_in_progress ||
+        s.player_at_the_table === null ||
+        s.black < 1) {
       return 'disabled';
     }
     return '';
   },
 
   re_rack_disabled() {
-    if (this.status.player_to_break === null) {
+    let s = this.status;
+    if (!s ||
+        !s.frame_in_progress ||
+        s.player_at_the_table === null ||
+        s.black < 1) {
       return 'disabled';
     }
     return '';
   },
 
   foul4_disabled() {
-    if (this.status.player_to_break === null) {
+    let s = this.status;
+    if (!s ||
+        !s.frame_in_progress ||
+        s.player_at_the_table === null ||
+        s.brown < 1) {
       return 'disabled';
     }
     return '';
   },
 
   foul5_disabled() {
-    if (this.status.player_to_break === null) {
+    let s = this.status;
+    if (!s ||
+        !s.frame_in_progress ||
+        s.player_at_the_table === null ||
+        s.blue < 1) {
       return 'disabled';
     }
     return '';
   },
 
   foul6_disabled() {
-    if (this.status.player_to_break === null) {
+    let s = this.status;
+    if (!s ||
+        !s.frame_in_progress ||
+        s.player_at_the_table === null ||
+        s.pink < 1) {
       return 'disabled';
     }
     return '';
   },
 
   foul7_disabled() {
-    if (this.status.player_to_break === null) {
+    let s = this.status;
+    if (!s ||
+        !s.frame_in_progress ||
+        s.player_at_the_table === null ||
+        s.black < 1) {
       return 'disabled';
     }
     return '';
   },
 
   miss_disabled() {
-    if (this.status.player_to_break === null) {
+    let s = this.status;
+    if (!s ||
+        !s.frame_in_progress ||
+        s.player_at_the_table === null ||
+        !s.foul) {
       return 'disabled';
     }
     return '';
   },
 
   free_ball_disabled() {
-    if (this.status.player_to_break === null) {
+    let s = this.status;
+    if (!s ||
+        !s.frame_in_progress ||
+        s.player_at_the_table === null ||
+        !s.foul) {
       return 'disabled';
     }
     return '';
   },
 
   put_back_disabled() {
-    if (this.status.player_to_break === null) {
+    let s = this.status;
+    if (!s ||
+        !s.frame_in_progress ||
+        s.player_at_the_table === null ||
+        !s.foul) {
       return 'disabled';
     }
     return '';
   },
 
   play_again_disabled() {
-    if (this.status.player_to_break === null) {
+    let s = this.status;
+    if (!s ||
+        !s.frame_in_progress ||
+        s.player_at_the_table === null ||
+        !s.foul) {
       return 'disabled';
     }
     return '';
   },
 
   frame_won_disabled() {
-    if (this.status.player_to_break === null) {
+    let s = this.status;
+    if (!s ||
+        !s.frame_in_progress ||
+        s.player_at_the_table === null) {
       return 'disabled';
     }
     return '';
   },
 
   conceded_disabled() {
-    if (this.status.player_to_break === null) {
+    let s = this.status;
+    if (!s ||
+        !s.frame_in_progress ||
+        s.player_at_the_table === null) {
       return 'disabled';
     }
     return '';
   },
 
   undo_disabled() {
-    if (this.status.player_to_break === null) {
+    let s = this.status;
+    if (!s ||
+        s.player_to_break === null) {
       return 'disabled';
     }
     return '';
   },
 
   redo_disabled() {
-    if (this.status.player_to_break === null) {
+    let s = this.status;
+    if (!s ||
+        s.player_to_break === null) {
       return 'disabled';
     }
     return '';
@@ -210,26 +333,249 @@ Template.Score_match_page.helpers({
 Template.Score_match_page.events({
 
   'click #player1'(event, template) {
-    if (this.status.player_to_break === null) {
-      Meteor.call('matches.update', this._id,
-        {"status.player_to_break": 0, "status.player_at_the_table": 0});
+    let s = this.status;
+    if (s.player_to_break === null) { // match did not start yet
+      s.player_to_break = 0;
+      s.player_at_the_table = 0;
+      Meteor.call('matches.update', this._id, {status: s});
+    } else if (s.player_at_the_table === null) { // re-spotted black
+      s.player_at_the_table = 0;
+      Meteor.call('matches.update', this._id, {status: s});
     }
   },
 
   'click #player2'(event, template) {
-    if (this.status.player_to_break === null) {
-      Meteor.call('matches.update', this._id,
-        {"status.player_to_break": 1, "status.player_at_the_table": 1});
+    let s = this.status;
+    if (s.player_to_break === null) { // match did not start yet
+      s.player_to_break = 1;
+      s.player_at_the_table = 1;
+      Meteor.call('matches.update', this._id, {status: s});
+    } else if (s.player_at_the_table === null) { // re-spotted black
+      s.player_at_the_table = 1;
+      Meteor.call('matches.update', this._id, {status: s});
+    }
+  },
+
+  'click #break-off'(event, template) {
+    let s = this.status;
+    if (!s.frame_in_progress) {
+      s.frame_in_progress = true;
+      s.player_at_the_table ^= 1;
+      Meteor.call('matches.update', this._id, {status: s});
+    }
+  },
+
+  'click #played-safe'(event, template) {
+    let s = this.status;
+    if (s.frame_in_progress) {
+      s.player_at_the_table ^= 1;
+      s.break_points = 0;
+      if (!s.colours_only) {
+        if (s.red < 1) {
+          s.colours_only = true;
+        } else {
+          s.on_colour = false;
+        }
+      }
+      Meteor.call('matches.update', this._id, {status: s});
+    }
+  },
+
+  'click #missed-pot'(event, template) {
+    let s = this.status;
+    if (s.frame_in_progress) {
+      s.player_at_the_table ^= 1;
+      s.break_points = 0;
+      if (!s.colours_only) {
+        if (s.red < 1) {
+          s.colours_only = true;
+        } else {
+          s.on_colour = false;
+        }
+      }
+      Meteor.call('matches.update', this._id, {status: s});
+    }
+  },
+
+  'click #re-rack'(event, template) {
+    let s = this.status;
+    if (s.frame_in_progress) {
+      // save some status items
+      let frames = s.frames;
+      let player_to_break = s.player_to_break;
+      // reset status
+      s = INITIAL_STATUS;
+      // restore saved status items
+      s.frames = frames;
+      s.player_to_break = player_to_break;
+      s.player_at_the_table = player_to_break;
+      Meteor.call('matches.update', this._id, {status: s});
     }
   },
 
   'click #red'(event, template) {
-    if (this.status.red > 0) {
-      this.status.red -= 1;
-      this.status.score[this.status.player_at_the_table] += 1;
-      this.status.break_points += 1;
-      // this.status.on_red = false;
-      Meteor.call('matches.update', this._id, this);
+    let s = this.status;
+    if (s.red > 0) {
+      s.score[s.player_at_the_table] += 1;
+      s.break_points += 1;
+      s.red -= 1;
+      s.on_colour = true;
+      Meteor.call('matches.update', this._id, {status: s});
+    }
+  },
+
+  'click #yellow'(event, template) {
+    let s = this.status;
+    if (s.yellow > 0) {
+      s.score[s.player_at_the_table] += 2;
+      s.break_points += 2;
+      if (s.colours_only) {
+        s.yellow -= 1;
+      } else {
+        if (s.red < 1) {
+          s.colours_only = true;
+        } else {
+          s.on_colour = false;
+        }
+      }
+      Meteor.call('matches.update', this._id, {status: s});
+    }
+  },
+
+  'click #green'(event, template) {
+    let s = this.status;
+    if (s.green > 0) {
+      s.score[s.player_at_the_table] += 3;
+      s.break_points += 3;
+      if (s.colours_only) {
+        s.green -= 1;
+      } else {
+        if (s.red < 1) {
+          s.colours_only = true;
+        } else {
+          s.on_colour = false;
+        }
+      }
+      Meteor.call('matches.update', this._id, {status: s});
+    }
+  },
+
+  'click #brown'(event, template) {
+    let s = this.status;
+    if (s.brown > 0) {
+      s.score[s.player_at_the_table] += 4;
+      s.break_points += 4;
+      if (s.colours_only) {
+        s.brown -= 1;
+      } else {
+        if (s.red < 1) {
+          s.colours_only = true;
+        } else {
+          s.on_colour = false;
+        }
+      }
+      Meteor.call('matches.update', this._id, {status: s});
+    }
+  },
+
+  'click #blue'(event, template) {
+    let s = this.status;
+    if (s.blue > 0) {
+      s.score[s.player_at_the_table] += 5;
+      s.break_points += 5;
+      if (s.colours_only) {
+        s.blue -= 1;
+      } else {
+        if (s.red < 1) {
+          s.colours_only = true;
+        } else {
+          s.on_colour = false;
+        }
+      }
+      Meteor.call('matches.update', this._id, {status: s});
+    }
+  },
+
+  'click #pink'(event, template) {
+    let s = this.status;
+    if (s.pink > 0) {
+      s.score[s.player_at_the_table] += 6;
+      s.break_points += 6;
+      if (s.colours_only) {
+        s.pink -= 1;
+      } else {
+        if (s.red < 1) {
+          s.colours_only = true;
+        } else {
+          s.on_colour = false;
+        }
+      }
+      Meteor.call('matches.update', this._id, {status: s});
+    }
+  },
+
+  'click #black'(event, template) {
+    let s = this.status;
+    if (s.black > 0) {
+      s.score[s.player_at_the_table] += 7;
+      s.break_points += 7;
+      if (s.colours_only) {
+        if (s.score[0] != s.score[1]) {
+          s.black -= 1;
+        } else { // re-spotted black
+          s.player_at_the_table = null;
+          s.break_points = 0;
+        }
+      } else {
+        if (s.red < 1) {
+          s.colours_only = true;
+        } else {
+          s.on_colour = false;
+        }
+      }
+      Meteor.call('matches.update', this._id, {status: s});
+    }
+  },
+
+  'click #frame-won'(event, template) {
+    let s = this.status;
+    if (s.frame_in_progress) {
+      s.frames[s.player_at_the_table] += 1;
+      s.player_to_break ^= 1;
+      // save some status items
+      let frames = s.frames;
+      let player_to_break = s.player_to_break;
+      // reset status
+      s = INITIAL_STATUS;
+      // restore saved status items
+      s.frames = frames;
+      s.player_to_break = player_to_break;
+      if (s.frames[0] != (this.frames + 1) / 2 &&  // match is not finished yet
+          s.frames[1] != (this.frames + 1) / 2) {
+        s.player_at_the_table = player_to_break;
+      }
+      Meteor.call('matches.update', this._id, {status: s});
+    }
+  },
+
+  'click #conceded'(event, template) {
+    let s = this.status;
+    if (s.frame_in_progress) {
+      s.frames[s.player_at_the_table ^ 1] += 1;
+      s.player_to_break ^= 1;
+      // save some status items
+      let frames = s.frames;
+      let player_to_break = s.player_to_break;
+      // reset status
+      s = INITIAL_STATUS;
+      // restore saved status items
+      s.frames = frames;
+      s.player_to_break = player_to_break;
+      if (s.frames[0] != (this.frames + 1) / 2 &&  // match is not finished yet
+          s.frames[1] != (this.frames + 1) / 2) {
+        s.player_at_the_table = player_to_break;
+      }
+      Meteor.call('matches.update', this._id, {status: s});
     }
   }
 
