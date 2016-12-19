@@ -169,9 +169,13 @@
           </button>
         </div>
         <div class="three wide column">
-          <button id="red-lost" class="ui large fluid button" {{red_lost_disabled}}>
-            Red Lost
+          <button id="red-lost" class="ui large fluid animated fade button" {{red_lost_disabled}}>
+            <div class="visible content">Red Lost</div>
+            <div class="hidden content">{{status.red}} remain</div>
           </button>
+          <!-- <button id="red-lost" class="ui large fluid button" {{red_lost_disabled}}>
+            Red Lost
+          </button> -->
         </div>
         <div class="one wide column"></div>
         <div class="three wide column">
