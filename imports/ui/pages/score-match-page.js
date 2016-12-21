@@ -265,6 +265,7 @@ Template.Score_match_page.helpers({
         !s.frame_in_progress ||
         s.player_at_the_table === null ||
         !s.foul ||
+        s.pink < 1 ||
         s.free_ball) {
       return 'disabled';
     }
@@ -441,24 +442,24 @@ Template.Score_match_page.events({
   'click #yellow'(event, template) {
     let s = this.status;
     if (s.yellow > 0) {
+      const was_nominated = s.free_ball && s.red > 0 ? true : false;
+      const points_scored = was_nominated ? ballOnValue(s) : 2;
+      s.score[s.player_at_the_table] += points_scored;
+      s.break_points += points_scored;
       s.foul = false;
       s.miss = false;
-      // const was_nominated = s.free_ball && s.red > 0 ? true : false;
       s.free_ball = false;
-      // const points_scored = was_nominated ? 1 : 2;
-      // TODO higher value balls could be nominated an ANY lower value ball!
-      // TODO the value of the nominated ball depends on what ball was on!
-      // s.score[s.player_at_the_table] += points_scored;
-      // s.break_points += points_scored;
-      s.score[s.player_at_the_table] += 2;
-      s.break_points += 2;
-      if (s.colours_only) {
-        s.yellow -= 1;
+      if (was_nominated) {
+        s.on_colour = true;
       } else {
-        if (s.red < 1) {
-          s.colours_only = true;
+        if (s.colours_only) {
+          s.yellow -= 1;
         } else {
-          s.on_colour = false;
+          if (s.red < 1) {
+            s.colours_only = true;
+          } else {
+            s.on_colour = false;
+          }
         }
       }
       Meteor.call('matches.update', this._id, {status: s});
@@ -468,18 +469,24 @@ Template.Score_match_page.events({
   'click #green'(event, template) {
     let s = this.status;
     if (s.green > 0) {
+      const was_nominated = s.free_ball && s.yellow > 0 ? true : false;
+      const points_scored = was_nominated ? ballOnValue(s) : 3;
+      s.score[s.player_at_the_table] += points_scored;
+      s.break_points += points_scored;
       s.foul = false;
       s.miss = false;
       s.free_ball = false;
-      s.score[s.player_at_the_table] += 3;
-      s.break_points += 3;
-      if (s.colours_only) {
-        s.green -= 1;
+      if (was_nominated) {
+        s.on_colour = true;
       } else {
-        if (s.red < 1) {
-          s.colours_only = true;
+        if (s.colours_only) {
+          s.green -= 1;
         } else {
-          s.on_colour = false;
+          if (s.red < 1) {
+            s.colours_only = true;
+          } else {
+            s.on_colour = false;
+          }
         }
       }
       Meteor.call('matches.update', this._id, {status: s});
@@ -489,18 +496,24 @@ Template.Score_match_page.events({
   'click #brown'(event, template) {
     let s = this.status;
     if (s.brown > 0) {
+      const was_nominated = s.free_ball && s.green > 0 ? true : false;
+      const points_scored = was_nominated ? ballOnValue(s) : 4;
+      s.score[s.player_at_the_table] += points_scored;
+      s.break_points += points_scored;
       s.foul = false;
       s.miss = false;
       s.free_ball = false;
-      s.score[s.player_at_the_table] += 4;
-      s.break_points += 4;
-      if (s.colours_only) {
-        s.brown -= 1;
+      if (was_nominated) {
+        s.on_colour = true;
       } else {
-        if (s.red < 1) {
-          s.colours_only = true;
+        if (s.colours_only) {
+          s.brown -= 1;
         } else {
-          s.on_colour = false;
+          if (s.red < 1) {
+            s.colours_only = true;
+          } else {
+            s.on_colour = false;
+          }
         }
       }
       Meteor.call('matches.update', this._id, {status: s});
@@ -510,18 +523,24 @@ Template.Score_match_page.events({
   'click #blue'(event, template) {
     let s = this.status;
     if (s.blue > 0) {
+      const was_nominated = s.free_ball && s.brown > 0 ? true : false;
+      const points_scored = was_nominated ? ballOnValue(s) : 5;
+      s.score[s.player_at_the_table] += points_scored;
+      s.break_points += points_scored;
       s.foul = false;
       s.miss = false;
       s.free_ball = false;
-      s.score[s.player_at_the_table] += 5;
-      s.break_points += 5;
-      if (s.colours_only) {
-        s.blue -= 1;
+      if (was_nominated) {
+        s.on_colour = true;
       } else {
-        if (s.red < 1) {
-          s.colours_only = true;
+        if (s.colours_only) {
+          s.blue -= 1;
         } else {
-          s.on_colour = false;
+          if (s.red < 1) {
+            s.colours_only = true;
+          } else {
+            s.on_colour = false;
+          }
         }
       }
       Meteor.call('matches.update', this._id, {status: s});
@@ -531,18 +550,24 @@ Template.Score_match_page.events({
   'click #pink'(event, template) {
     let s = this.status;
     if (s.pink > 0) {
+      const was_nominated = s.free_ball && s.blue > 0 ? true : false;
+      const points_scored = was_nominated ? ballOnValue(s) : 6;
+      s.score[s.player_at_the_table] += points_scored;
+      s.break_points += points_scored;
       s.foul = false;
       s.miss = false;
       s.free_ball = false;
-      s.score[s.player_at_the_table] += 6;
-      s.break_points += 6;
-      if (s.colours_only) {
-        s.pink -= 1;
+      if (was_nominated) {
+        s.on_colour = true;
       } else {
-        if (s.red < 1) {
-          s.colours_only = true;
+        if (s.colours_only) {
+          s.pink -= 1;
         } else {
-          s.on_colour = false;
+          if (s.red < 1) {
+            s.colours_only = true;
+          } else {
+            s.on_colour = false;
+          }
         }
       }
       Meteor.call('matches.update', this._id, {status: s});
@@ -552,23 +577,29 @@ Template.Score_match_page.events({
   'click #black'(event, template) {
     let s = this.status;
     if (s.black > 0) {
+      const was_nominated = s.free_ball && s.pink > 0 ? true : false;
+      const points_scored = was_nominated ? ballOnValue(s) : 7;
+      s.score[s.player_at_the_table] += points_scored;
+      s.break_points += points_scored;
       s.foul = false;
       s.miss = false;
       s.free_ball = false;
-      s.score[s.player_at_the_table] += 7;
-      s.break_points += 7;
-      if (s.colours_only) {
-        if (s.score[0] != s.score[1]) {
-          s.black -= 1;
-        } else { // re-spotted black
-          s.player_at_the_table = null;
-          s.break_points = 0;
-        }
+      if (was_nominated) {
+        s.on_colour = true;
       } else {
-        if (s.red < 1) {
-          s.colours_only = true;
+        if (s.colours_only) {
+          if (s.score[0] != s.score[1]) {
+            s.black -= 1;
+          } else { // re-spotted black
+            s.player_at_the_table = null;
+            s.break_points = 0;
+          }
         } else {
-          s.on_colour = false;
+          if (s.red < 1) {
+            s.colours_only = true;
+          } else {
+            s.on_colour = false;
+          }
         }
       }
       Meteor.call('matches.update', this._id, {status: s});
@@ -672,6 +703,7 @@ Template.Score_match_page.events({
   },
 
   'click #play-again, click #put-back'(event, template) {
+    // TODO if the offender was on the colour, he should stay on the colour!
     let s = this.status;
     if (s.foul) {
       s.foul = false;
@@ -737,3 +769,14 @@ Template.Score_match_page.events({
   }
 
 });
+
+// helper function to get the value of the ball on
+function ballOnValue(status) {
+  if (status.red > 0) return 1;
+  if (status.yellow > 0) return 2;
+  if (status.green > 0) return 3;
+  if (status.brown > 0) return 4;
+  if (status.blue > 0) return 5;
+  if (status.pink > 0) return 6;
+  if (status.black > 0) return 7;
+}
