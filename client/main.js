@@ -1,6 +1,7 @@
 import '/imports/startup/client';
 
 import '/imports/api/matches';
+import '/imports/api/statuslog';
 
 import '/imports/ui/layouts';
 import '/imports/ui/pages';

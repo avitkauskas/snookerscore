@@ -3,12 +3,14 @@ import { Meteor } from 'meteor/meteor';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import { Matches, INITIAL_STATUS } from '../../api/matches/matches.js';
+import { StatusLog } from '../../api/statuslog/statuslog.js';
 
 
 Template.Score_match_page.onCreated(function() {
   // this.autorun(() => {
     const id = FlowRouter.getParam('id');
     this.subscribe('one_match', id);
+    this.subscribe('statuslog', id);
   // });
 });
 
@@ -318,7 +320,7 @@ Template.Score_match_page.helpers({
   undo_disabled() {
     let s = this.status;
     if (!s ||
-        s.player_to_break === null) {
+        this.status_seq < 1) {
       return 'disabled';
     }
     return '';
@@ -327,7 +329,7 @@ Template.Score_match_page.helpers({
   redo_disabled() {
     let s = this.status;
     if (!s ||
-        s.player_to_break === null) {
+        this.status_seq == this.status_max) {
       return 'disabled';
     }
     return '';
@@ -343,10 +345,12 @@ Template.Score_match_page.events({
     if (s.player_to_break === null) { // match did not start yet
       s.player_to_break = 0;
       s.player_at_the_table = 0;
-      Meteor.call('matches.update', this._id, {status: s});
+      this.status = s;
+      updateStatus(this);
     } else if (s.player_at_the_table === null) { // re-spotted black
       s.player_at_the_table = 0;
-      Meteor.call('matches.update', this._id, {status: s});
+      this.status = s;
+      updateStatus(this);
     }
   },
 
@@ -355,10 +359,12 @@ Template.Score_match_page.events({
     if (s.player_to_break === null) { // match did not start yet
       s.player_to_break = 1;
       s.player_at_the_table = 1;
-      Meteor.call('matches.update', this._id, {status: s});
+      this.status = s;
+      updateStatus(this);
     } else if (s.player_at_the_table === null) { // re-spotted black
       s.player_at_the_table = 1;
-      Meteor.call('matches.update', this._id, {status: s});
+      this.status = s;
+      updateStatus(this);
     }
   },
 
@@ -367,7 +373,8 @@ Template.Score_match_page.events({
     if (!s.frame_in_progress) {
       s.frame_in_progress = true;
       s.player_at_the_table ^= 1;
-      Meteor.call('matches.update', this._id, {status: s});
+      this.status = s;
+      updateStatus(this);
     }
   },
 
@@ -386,7 +393,8 @@ Template.Score_match_page.events({
           s.on_colour = false;
         }
       }
-      Meteor.call('matches.update', this._id, {status: s});
+      this.status = s;
+      updateStatus(this);
     }
   },
 
@@ -405,7 +413,8 @@ Template.Score_match_page.events({
           s.on_colour = false;
         }
       }
-      Meteor.call('matches.update', this._id, {status: s});
+      this.status = s;
+      updateStatus(this);
     }
   },
 
@@ -421,7 +430,8 @@ Template.Score_match_page.events({
       s.frames = frames;
       s.player_to_break = player_to_break;
       s.player_at_the_table = player_to_break;
-      Meteor.call('matches.update', this._id, {status: s});
+      this.status = s;
+      updateStatus(this);
     }
   },
 
@@ -435,7 +445,8 @@ Template.Score_match_page.events({
       s.break_points += 1;
       s.red -= 1;
       s.on_colour = true;
-      Meteor.call('matches.update', this._id, {status: s});
+      this.status = s;
+      updateStatus(this);
     }
   },
 
@@ -462,7 +473,8 @@ Template.Score_match_page.events({
           }
         }
       }
-      Meteor.call('matches.update', this._id, {status: s});
+      this.status = s;
+      updateStatus(this);
     }
   },
 
@@ -489,7 +501,8 @@ Template.Score_match_page.events({
           }
         }
       }
-      Meteor.call('matches.update', this._id, {status: s});
+      this.status = s;
+      updateStatus(this);
     }
   },
 
@@ -516,7 +529,8 @@ Template.Score_match_page.events({
           }
         }
       }
-      Meteor.call('matches.update', this._id, {status: s});
+      this.status = s;
+      updateStatus(this);
     }
   },
 
@@ -543,7 +557,8 @@ Template.Score_match_page.events({
           }
         }
       }
-      Meteor.call('matches.update', this._id, {status: s});
+      this.status = s;
+      updateStatus(this);
     }
   },
 
@@ -570,7 +585,8 @@ Template.Score_match_page.events({
           }
         }
       }
-      Meteor.call('matches.update', this._id, {status: s});
+      this.status = s;
+      updateStatus(this);
     }
   },
 
@@ -602,7 +618,8 @@ Template.Score_match_page.events({
           }
         }
       }
-      Meteor.call('matches.update', this._id, {status: s});
+      this.status = s;
+      updateStatus(this);
     }
   },
 
@@ -622,7 +639,8 @@ Template.Score_match_page.events({
           s.on_colour = false;
         }
       }
-      Meteor.call('matches.update', this._id, {status: s});
+      this.status = s;
+      updateStatus(this);
     }
   },
 
@@ -642,7 +660,8 @@ Template.Score_match_page.events({
           s.on_colour = false;
         }
       }
-      Meteor.call('matches.update', this._id, {status: s});
+      this.status = s;
+      updateStatus(this);
     }
   },
 
@@ -662,7 +681,8 @@ Template.Score_match_page.events({
           s.on_colour = false;
         }
       }
-      Meteor.call('matches.update', this._id, {status: s});
+      this.status = s;
+      updateStatus(this);
     }
   },
 
@@ -682,7 +702,8 @@ Template.Score_match_page.events({
           s.on_colour = false;
         }
       }
-      Meteor.call('matches.update', this._id, {status: s});
+      this.status = s;
+      updateStatus(this);
     }
   },
 
@@ -690,7 +711,8 @@ Template.Score_match_page.events({
     let s = this.status;
     if (s.foul) {
       s.miss = true;
-      Meteor.call('matches.update', this._id, {status: s});
+      this.status = s;
+      updateStatus(this);
     }
   },
 
@@ -698,7 +720,8 @@ Template.Score_match_page.events({
     let s = this.status;
     if (s.foul) {
       s.free_ball = true;
-      Meteor.call('matches.update', this._id, {status: s});
+      this.status = s;
+      updateStatus(this);
     }
   },
 
@@ -710,7 +733,8 @@ Template.Score_match_page.events({
       s.miss = false;
       s.free_ball = false;
       s.player_at_the_table ^= 1;
-      Meteor.call('matches.update', this._id, {status: s});
+      this.status = s;
+      updateStatus(this);
     }
   },
 
@@ -722,7 +746,8 @@ Template.Score_match_page.events({
         s.colours_only = true;
         s.on_colour = true;
       }
-      Meteor.call('matches.update', this._id, {status: s});
+      this.status = s;
+      updateStatus(this);
     }
   },
 
@@ -743,7 +768,8 @@ Template.Score_match_page.events({
           s.frames[1] < (this.frames + 1) / 2) {
         s.player_at_the_table = player_to_break;
       }
-      Meteor.call('matches.update', this._id, {status: s});
+      this.status = s;
+      updateStatus(this);
     }
   },
 
@@ -764,7 +790,26 @@ Template.Score_match_page.events({
           s.frames[1] < (this.frames + 1) / 2) {
         s.player_at_the_table = player_to_break;
       }
-      Meteor.call('matches.update', this._id, {status: s});
+      this.status = s;
+      updateStatus(this);
+    }
+  },
+
+  'click #undo'(event, template) {
+    if (this.status_seq > 0) {
+      const seq = this.status_seq - 1;
+      statusLog = StatusLog.findOne({match_id: this._id, status_seq: seq});
+      if (!statusLog) throw new Meteor.Error('Could not find status log');
+      Meteor.call('matches.update', this._id, {status_seq: seq, status: statusLog.status});
+    }
+  },
+
+  'click #redo'(event, template) {
+    if (this.status_seq < this.status_max) {
+      const seq = this.status_seq + 1;
+      statusLog = StatusLog.findOne({match_id: this._id, status_seq: seq});
+      if (!statusLog) throw new Meteor.Error('Could not find status log');
+      Meteor.call('matches.update', this._id, {status_seq: seq, status: statusLog.status});
     }
   }
 
@@ -779,4 +824,11 @@ function ballOnValue(status) {
   if (status.blue > 0) return 5;
   if (status.pink > 0) return 6;
   if (status.black > 0) return 7;
-}
+};
+
+// helper function to update status of the match and status log
+function updateStatus(match) {
+  const seq = match.status_seq + 1;
+  Meteor.call('matches.update', match._id, {status_seq: seq, status_max: seq, status: match.status});
+  Meteor.call('statuslog.upsert', match._id, seq, {status: match.status});
+};
