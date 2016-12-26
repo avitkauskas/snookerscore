@@ -154,33 +154,37 @@
 
       <div class="six column center aligned row">
         <div class="three wide column">
-          <button id="break-off" class="ui large fluid button" {{break_off_disabled}}>
-            Break-off
+          <button id="break-off" class="ui large fluid left labeled button" {{break_off_disabled}}>
+            <div class="ui label"><div class="key">O</div></div>
+            <div class="ui large fluid button">Break Off</div>
           </button>
         </div>
         <div class="three wide column">
-          <button id="played-safe" class="ui large fluid button" {{played_safe_disabled}}>
-            Played Safe
+          <button id="end-of-break" class="ui large fluid left labeled button" {{end_of_break_disabled}}>
+            <div class="ui label"><div class="key">E</div></div>
+            <div class="ui large fluid button">End Break</div>
           </button>
         </div>
         <div class="three wide column">
-          <button id="missed-pot" class="ui large fluid button" {{missed_pot_disabled}}>
-            Missed Pot
+          <button id="non-striker" class="ui large fluid left labeled button" {{non_striker_disabled}}>
+            <div class="ui label"><div class="key">N</div></div>
+            <div class="ui large fluid button">Non-Striker</div>
           </button>
         </div>
         <div class="three wide column">
-          <button id="red-lost" class="ui large fluid animated fade button" {{red_lost_disabled}}>
-            <div class="visible content">Red Lost</div>
-            <div class="hidden content">{{status.red}} remain</div>
+          <button id="red-lost" class="ui large fluid left labeled button" {{red_lost_disabled}}>
+            <div class="ui label"><div class="key">L</div></div>
+            <div class="ui large fluid animated fade button">
+              <div class="visible content">Red Lost</div>
+              <div class="hidden content">{{status.red}} remain</div>
+            </div>
           </button>
-          <!-- <button id="red-lost" class="ui large fluid button" {{red_lost_disabled}}>
-            Red Lost
-          </button> -->
         </div>
         <div class="one wide column"></div>
         <div class="three wide column">
-          <button id="re-rack" class="ui large fluid button" {{re_rack_disabled}}>
-            Re-rack
+          <button id="re-rack" class="ui large fluid left labeled button" {{re_rack_disabled}}>
+            <div class="ui label"><div class="key">R</div></div>
+            <div class="ui large fluid button">Re-Rack</div>
           </button>
         </div>
 
@@ -188,58 +192,68 @@
 
       <div class="six column center aligned row">
         <div class="three wide column">
-          <button id="foul4" class="ui large fluid button" {{foul4_disabled}}>
-            Foul 4
+          <button id="foul4" class="ui large fluid left labeled button" {{foul4_disabled}}>
+            <div class="ui label"><div class="key">F4</div></div>
+            <div class="ui large fluid button">Foul 4</div>
           </button>
         </div>
         <div class="three wide column">
-          <button id="foul5" class="ui large fluid button" {{foul5_disabled}}>
-            Foul 5
+          <button id="foul5" class="ui large fluid left labeled button" {{foul5_disabled}}>
+            <div class="ui label"><div class="key">F5</div></div>
+            <div class="ui large fluid button">Foul 5</div>
           </button>
         </div>
         <div class="three wide column">
-          <button id="foul6" class="ui large fluid button" {{foul6_disabled}}>
-            Foul 6
+          <button id="foul6" class="ui large fluid left labeled button" {{foul6_disabled}}>
+            <div class="ui label"><div class="key">F6</div></div>
+            <div class="ui large fluid button">Foul 6</div>
           </button>
         </div>
         <div class="three wide column">
-          <button id="foul7" class="ui large fluid button" {{foul7_disabled}}>
-            Foul 7
+          <button id="foul7" class="ui large fluid left labeled button" {{foul7_disabled}}>
+            <div class="ui label"><div class="key">F7</div></div>
+            <div class="ui large fluid button">Foul 7</div>
           </button>
         </div>
         <div class="one wide column"></div>
         <div class="three wide column">
-          <button id="frame-won" class="ui large olive fluid button" {{frame_won_disabled}}>
-            Frame Won
+          <button id="frame-won" class="ui large fluid left labeled button" {{frame_won_disabled}}>
+            <div class="ui olive label"><div class="key">W</div></div>
+            <div class="ui large olive fluid button">Frame Won</div>
           </button>
         </div>
       </div>
 
       <div class="six column center aligned row">
         <div class="three wide column">
-          <button id="miss" class="ui large fluid button" {{miss_disabled}}>
-            Miss
+          <button id="miss" class="ui large fluid left labeled button" {{miss_disabled}}>
+            <div class="ui label"><div class="key">M</div></div>
+            <div class="ui large fluid button">Miss</div>
           </button>
         </div>
         <div class="three wide column">
-          <button id="free-ball" class="ui large fluid button" {{free_ball_disabled}}>
-            Free Ball
+          <button id="free-ball" class="ui large fluid left labeled button" {{free_ball_disabled}}>
+            <div class="ui label"><div class="key">F</div></div>
+            <div class="ui large fluid button">Free Ball</div>
           </button>
         </div>
         <div id="put-back" class="three wide column">
-          <button class="ui large fluid button" {{put_back_disabled}}>
-            Put Back
+          <button class="ui large fluid left labeled button" {{put_back_disabled}}>
+            <div class="ui label"><div class="key">B</div></div>
+            <div class="ui large fluid button">Put Back</div>
           </button>
         </div>
         <div class="three wide column">
-          <button id="play-again" class="ui large fluid button" {{play_again_disabled}}>
-            Play Again
+          <button id="play-again" class="ui large fluid left labeled button" {{play_again_disabled}}>
+            <div class="ui label"><div class="key"><div class="key">A</div></div></div>
+            <div class="ui large fluid button">Play Again</div>
           </button>
         </div>
         <div class="one wide column"></div>
         <div class="three wide column">
-          <button id="conceded" class="ui large orange fluid button" {{conceded_disabled}}>
-            Conceded
+          <button id="conceded" class="ui large fluid left labeled button" {{conceded_disabled}}>
+            <div class="ui orange label"><div class="key">C</div></div>
+            <div class="ui large orange fluid button">Conceded</div>
           </button>
         </div>
       </div>

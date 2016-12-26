@@ -159,7 +159,7 @@ Template.Score_match_page.helpers({
     return '';
   },
 
-  played_safe_disabled() {
+  end_of_break_disabled() {
     let s = this.status;
     if (!s ||
         !s.frame_in_progress ||
@@ -170,15 +170,8 @@ Template.Score_match_page.helpers({
     return '';
   },
 
-  missed_pot_disabled() {
-    let s = this.status;
-    if (!s ||
-        !s.frame_in_progress ||
-        s.player_at_the_table === null ||
-        s.black < 1) {
-      return 'disabled';
-    }
-    return '';
+  non_striker_disabled() {
+    // TODO
   },
 
   red_lost_disabled() {
@@ -378,7 +371,7 @@ Template.Score_match_page.events({
     }
   },
 
-  'click #played-safe'(event, template) {
+  'click #end-of-break'(event, template) {
     let s = this.status;
     if (s.frame_in_progress) {
       s.foul = false;
@@ -398,24 +391,8 @@ Template.Score_match_page.events({
     }
   },
 
-  'click #missed-pot'(event, template) {
-    let s = this.status;
-    if (s.frame_in_progress) {
-      s.foul = false;
-      s.miss = false;
-      s.free_ball = false;
-      s.player_at_the_table ^= 1;
-      s.break_points = 0;
-      if (!s.colours_only) {
-        if (s.red < 1) {
-          s.colours_only = true;
-        } else {
-          s.on_colour = false;
-        }
-      }
-      this.status = s;
-      updateStatus(this);
-    }
+  'click #non-striker'(event, template) {
+    // TODO
   },
 
   'click #re-rack'(event, template) {
