@@ -10,7 +10,7 @@ export const INITIAL_STATUS = {
   player_at_the_table: null, player_to_break: null, frame_in_progress: false,
   red: 15, yellow: 1, green: 1, brown: 1, blue: 1, pink: 1, black: 1,
   foul: false, miss: false, free_ball: false,
-  colours_only: false, on_colour: false
+  colours_only: false, on_colour: false, foul_on_colour: false
 };
 
 Meteor.methods({

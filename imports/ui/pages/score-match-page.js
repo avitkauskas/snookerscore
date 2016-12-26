@@ -623,12 +623,16 @@ Template.Score_match_page.events({
     }
   },
 
+  // TODO Non-striker foul when opponent is on colour
+  // TODO After foul striker should continue on colour
+
   'click #foul4'(event, template) {
     let s = this.status;
     if (s.frame_in_progress) {
       s.foul = true;
       s.miss = false;
       s.free_ball = false;
+      s.foul_on_colour = s.on_colour;
       s.score[s.player_at_the_table ^ 1] += 4;
       s.player_at_the_table ^= 1;
       s.break_points = 0;
@@ -650,6 +654,7 @@ Template.Score_match_page.events({
       s.foul = true;
       s.miss = false;
       s.free_ball = false;
+      s.foul_on_colour = s.on_colour;
       s.score[s.player_at_the_table ^ 1] += 5;
       s.player_at_the_table ^= 1;
       s.break_points = 0;
@@ -671,6 +676,7 @@ Template.Score_match_page.events({
       s.foul = true;
       s.miss = false;
       s.free_ball = false;
+      s.foul_on_colour = s.on_colour;
       s.score[s.player_at_the_table ^ 1] += 6;
       s.player_at_the_table ^= 1;
       s.break_points = 0;
@@ -692,6 +698,7 @@ Template.Score_match_page.events({
       s.foul = true;
       s.miss = false;
       s.free_ball = false;
+      s.foul_on_colour = s.on_colour;
       s.score[s.player_at_the_table ^ 1] += 7;
       s.player_at_the_table ^= 1;
       s.break_points = 0;
@@ -725,13 +732,28 @@ Template.Score_match_page.events({
     }
   },
 
-  'click #play-again, click #put-back'(event, template) {
+  'click #play-again'(event, template) {
     // TODO if the offender was on the colour, he should stay on the colour!
+    // TODO Is it realy so after play-again?
     let s = this.status;
     if (s.foul) {
       s.foul = false;
       s.miss = false;
       s.free_ball = false;
+      s.player_at_the_table ^= 1;
+      this.status = s;
+      updateStatus(this);
+    }
+  },
+
+  'click #put-back'(event, template) {
+    let s = this.status;
+    if (s.foul) {
+      s.foul = false;
+      s.miss = false;
+      s.free_ball = false;
+      s.on_colour = s.foul_on_colour;
+      s.foul_on_colour = false;
       s.player_at_the_table ^= 1;
       this.status = s;
       updateStatus(this);
