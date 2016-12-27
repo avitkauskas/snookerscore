@@ -15,6 +15,12 @@ Template.Score_match_page.onCreated(function() {
 });
 
 
+Template.Score_match_page.onRendered(function() {
+  // focus on outer div to catch keyboard events
+  this.$("#key-catcher").focus();
+});
+
+
 Template.Score_match_page.helpers({
   match() {
     const id = FlowRouter.getParam("id");
@@ -25,7 +31,7 @@ Template.Score_match_page.helpers({
     let s = this.status;
     if (!s) return false;
     if (s.player_to_break === null) { // match did not start yet
-      this.message = "Please click the name of the player to break in the first frame";
+      this.message = "Please click the name of the player to break in the first frame (or press 1 or 2 on the keyboard)";
       return true;
     } else if (s.frames[0] >= (this.frames + 1) / 2 ||
                s.frames[1] >= (this.frames + 1) / 2) { // match finished
@@ -33,7 +39,7 @@ Template.Score_match_page.helpers({
       this.message = "Match - " + winner;
       return true;
     } else if (s.player_at_the_table === null) { // re-spotted black
-      this.message = "Please click the name of the player to play next";
+      this.message = "Please click the name of the player to play next (or press 1 or 2 on the keyboard)";
       return true;
     } else {
       return false;
@@ -159,7 +165,7 @@ Template.Score_match_page.helpers({
     return '';
   },
 
-  end_of_break_disabled() {
+  end_break_disabled() {
     let s = this.status;
     if (!s ||
         !s.frame_in_progress ||
@@ -172,6 +178,7 @@ Template.Score_match_page.helpers({
 
   non_striker_disabled() {
     // TODO
+    return 'disabled';
   },
 
   red_lost_disabled() {
@@ -371,7 +378,7 @@ Template.Score_match_page.events({
     }
   },
 
-  'click #end-of-break'(event, template) {
+  'click #end-break'(event, template) {
     let s = this.status;
     if (s.frame_in_progress) {
       s.foul = false;
@@ -809,6 +816,98 @@ Template.Score_match_page.events({
       statusLog = StatusLog.findOne({match_id: this._id, status_seq: seq});
       if (!statusLog) throw new Meteor.Error('Could not find status log');
       Meteor.call('matches.update', this._id, {status_seq: seq, status: statusLog.status});
+    }
+  },
+
+  'keydown #key-catcher'(event, template) {
+    switch (event.keyCode) {
+      case 27: // Esc
+        FlowRouter.go('Home_page');
+        break;
+      case 49: // 1
+        if (this.status.player_to_break === null ||
+            this.status.player_at_the_table === null) {
+          template.$('#player1').click();
+        } else {
+          template.$('#red').click();
+        }
+        break;
+      case 50: // 2
+        if (this.status.player_to_break === null ||
+            this.status.player_at_the_table === null) {
+          template.$('#player2').click();
+        } else {
+          template.$('#yellow').click();
+        }
+        break;
+      case 51: // 3
+        template.$('#green').click();
+        break;
+      case 52: // 4
+        template.$('#brown').click();
+        break;
+      case 53: // 5
+        template.$('#blue').click();
+        break;
+      case 54: // 6
+        template.$('#pink').click();
+        break;
+      case 55: // 7
+        template.$('#black').click();
+        break;
+      case 79: // O
+        template.$('#break-off').click();
+        break;
+      case 69: // E
+        template.$('#end-break').click();
+        break;
+      case 69: // N
+        template.$('#non-striker').click();
+        break;
+      case 76: // L
+        template.$('#red-lost').click();
+        break;
+      case 82: // R
+        template.$('#re-rack').click();
+        break;
+      case 115: // F4
+        template.$('#foul4').click();
+        break;
+      case 116: // F5
+        template.$('#foul5').click();
+        break;
+      case 117: // F6
+        template.$('#foul6').click();
+        break;
+      case 118: // F7
+        template.$('#foul7').click();
+        break;
+      case 77: // M
+        template.$('#miss').click();
+        break;
+      case 70: // F
+        template.$('#free-ball').click();
+        break;
+      case 66: // B
+        template.$('#put-back').click();
+        break;
+      case 65: // A
+        template.$('#play-again').click();
+        break;
+      case 87: // W
+        template.$('#frame-won').click();
+        break;
+      case 67: // C
+        template.$('#conceded').click();
+        break;
+      case 90: // Z
+      case 85: // U
+        template.$('#undo').click();
+        break;
+      case 89: // Y
+      case 68: // D
+        template.$('#redo').click();
+        break;
     }
   }
 
