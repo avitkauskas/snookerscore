@@ -1,0 +1,54 @@
+<template name="View_match_page">
+
+<style type="text/css">
+  body {
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    font-size: 100%;
+    padding-top: 0px;
+  }
+</style>
+
+<div id="cancel-catcher" tabindex="0" style="outline: none">
+
+  {{#with match}}
+    <div class="ui grid">
+
+      <div class="middle aligned row" style="height: 5vh;"></div>
+
+      <div class="middle aligned row" style="height: 25vh;">
+        <div class="seven wide right aligned column player">{{ players.[0] }}</div>
+        <div class="two wide center aligned column info"><small>VS</small></div>
+        <div class="seven wide left aligned column player">{{ players.[1] }}</div>
+      </div>
+
+      <div class="middle aligned row" style="height: 15vh;">
+        <div class="three wide center aligned column"></div>
+        <div class="three wide center aligned column frames">{{ status.frames.[0] }}</div>
+        <div class="four wide center aligned column info">FRAMES<br>({{ frames }})</div>
+        <div class="three wide center aligned column frames">{{ status.frames.[1] }}</div>
+        <div class="three wide center aligned column"></div>
+      </div>
+
+      <div class="middle aligned row" style="height: 30vh;">
+        <div class="three wide center aligned column"></div>
+        <div class="three wide center aligned column score">{{ status.score.[0] }}</div>
+        <div class="four wide center aligned column info">POINTS</div>
+        <div class="three wide center aligned column score">{{ status.score.[1] }}</div>
+        <div class="three wide center aligned column"></div>
+      </div>
+
+      <div class="middle aligned row" style="height: 15vh;">
+        <div class="three wide center aligned column"></div>
+        <div class="three wide center aligned column break"></div>
+        <div class="four wide center aligned column info">BREAK</div>
+        <div class="three wide center aligned column break">12</div>
+        <div class="three wide center aligned column"></div>
+      </div>
+
+    </div>
+  {{/with}}
+
+</div>
+</template>

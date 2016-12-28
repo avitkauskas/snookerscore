@@ -28,3 +28,10 @@ FlowRouter.route('/matches/score/:id', {
     BlazeLayout.render('Main_layout', { main: 'Score_match_page' });
   }
 });
+
+FlowRouter.route('/matches/view/:id', {
+  name: 'View_match_page',
+  action() {
+    BlazeLayout.render('Empty_layout', { main: 'View_match_page' });
+  }
+});

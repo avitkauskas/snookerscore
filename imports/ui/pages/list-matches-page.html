@@ -31,10 +31,10 @@
               			<strong>{{match.status.frames.[1]}}</strong>
               		</td>
               		<td class="left aligned">{{match.players.[1]}}</td>
-              		<td class="single line"> <a href="#">View</a>
+              		<td class="single line"> <a href="{{ pathFor 'View_match_page' id=match._id }}">View</a>
               			{{#if isOwner match.owner }}
-              				| <a href="{{ pathFor 'Edit_match_page' id=match._id}}">Edit</a>
-              				| <a href="{{ pathFor 'Score_match_page' id=match._id}}">Score</a>
+              				| <a href="{{ pathFor 'Edit_match_page' id=match._id }}">Edit</a>
+              				| <a href="{{ pathFor 'Score_match_page' id=match._id }}">Mark</a>
               			{{/if}}
               		</td>
               	</tr>
