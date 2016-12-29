@@ -22,7 +22,41 @@ Template.View_match_page.helpers({
   match() {
     const id = FlowRouter.getParam("id");
     return Matches.findOne(id) || {};
+  },
+
+  twolines(name) {
+    return name.replace(/ (?=[^ ]+$)/, "<br>");
+  },
+
+  break1() {
+    let s = this.status;
+    if (s && s.player_at_the_table === 0) {
+      return s.break_points;
+    } else {
+      return '';
+    }
+  },
+
+  break2() {
+    let s = this.status;
+    if (s && s.player_at_the_table === 1) {
+      return s.break_points;
+    } else {
+      return '';
+    }
+  },
+
+  match_not_finished() {
+    let s = this.status;
+    if (s.frames[0] >= (this.frames + 1) / 2 ||
+        s.frames[1] >= (this.frames + 1) / 2)
+    {
+      return false;
+    } else {
+      return true;
+    }
   }
+
 });
 
 

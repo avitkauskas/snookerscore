@@ -2,8 +2,8 @@
 
 <style type="text/css">
   body {
-    background-color: black;
-    color: white;
+    background-color: #3862e0;
+    color: White;
     text-transform: uppercase;
     font-size: 100%;
     padding-top: 0px;
@@ -17,35 +17,34 @@
 
       <div class="middle aligned row" style="height: 5vh;"></div>
 
-      <div class="middle aligned row" style="height: 25vh;">
-        <div class="seven wide right aligned column player">{{ players.[0] }}</div>
-        <div class="two wide center aligned column info"><small>VS</small></div>
-        <div class="seven wide left aligned column player">{{ players.[1] }}</div>
-      </div>
-
-      <div class="middle aligned row" style="height: 15vh;">
-        <div class="three wide center aligned column"></div>
-        <div class="three wide center aligned column frames">{{ status.frames.[0] }}</div>
-        <div class="four wide center aligned column info">FRAMES<br>({{ frames }})</div>
-        <div class="three wide center aligned column frames">{{ status.frames.[1] }}</div>
-        <div class="three wide center aligned column"></div>
-      </div>
-
       <div class="middle aligned row" style="height: 30vh;">
-        <div class="three wide center aligned column"></div>
-        <div class="three wide center aligned column score">{{ status.score.[0] }}</div>
-        <div class="four wide center aligned column info">POINTS</div>
-        <div class="three wide center aligned column score">{{ status.score.[1] }}</div>
-        <div class="three wide center aligned column"></div>
+        <div class="seven wide center aligned column player">{{{ twolines players.[0] }}}</div>
+        <div class="two wide center aligned column info"><small></small></div>
+        <div class="seven wide center aligned column player">{{{ twolines players.[1] }}}</div>
+      </div>
+
+      <div class="middle aligned row" style="height: 10vh;">
+        <div class="seven wide center aligned column frames">{{ status.frames.[0] }}</div>
+        <div class="two wide center aligned column info">
+          FRAMES<br>
+          <span class="total-frames">({{ frames }})</span>
+        </div>
+        <div class="seven wide center aligned column frames">{{ status.frames.[1] }}</div>
+      </div>
+
+      {{#if match_not_finished }}
+      <div class="middle aligned row" style="height: 30vh;">
+        <div class="seven wide center aligned column score">{{ status.score.[0] }}</div>
+        <div class="two wide center aligned column info">POINTS</div>
+        <div class="seven wide center aligned column score">{{ status.score.[1] }}</div>
       </div>
 
       <div class="middle aligned row" style="height: 15vh;">
-        <div class="three wide center aligned column"></div>
-        <div class="three wide center aligned column break"></div>
-        <div class="four wide center aligned column info">BREAK</div>
-        <div class="three wide center aligned column break">12</div>
-        <div class="three wide center aligned column"></div>
+        <div class="seven wide center aligned column break">{{ break1 }}</div>
+        <div class="two wide center aligned column info">BREAK</div>
+        <div class="seven wide center aligned column break">{{ break2 }}</div>
       </div>
+      {{/if}}
 
     </div>
   {{/with}}

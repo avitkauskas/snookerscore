@@ -8,29 +8,35 @@ body {
 }
 
 .player {
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 8vh;
-  /*font-weight: bold;*/
-  line-height: 1;
+  font-weight: bold;
+  line-height: 1.2;
 }
 
 .frames {
   font-size: 12vh;
-  line-height: 1;
+  font-weight: bold;
+}
+
+.total-frames {
+  font-size: 5vh;
+  font-weight: bold;
 }
 
 .score {
   font-size: 20vh;
-  line-height: 1;
+  font-weight: bold;
 }
 
 .break {
   font-size: 15vh;
-  line-height: 1;
+  font-weight: bold;
   color: yellow;
 }
 
 .info {
-  font-size: 5vh;
+  font-size: 4vh;
   line-height: 1;
-  color: grey;
+  color: AliceBlue;
 }
