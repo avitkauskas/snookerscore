@@ -844,16 +844,32 @@ Template.Score_match_page.events({
         template.$('#green').click();
         break;
       case 52: // 4
-        template.$('#brown').click();
+        if (event.ctrlKey) {
+          template.$('#foul4').click();
+        } else {
+          template.$('#brown').click();
+        }
         break;
       case 53: // 5
-        template.$('#blue').click();
+        if (event.ctrlKey) {
+          template.$('#foul5').click();
+        } else {
+          template.$('#blue').click();
+        }
         break;
       case 54: // 6
-        template.$('#pink').click();
+        if (event.ctrlKey) {
+          template.$('#foul6').click();
+        } else {
+          template.$('#pink').click();
+        }
         break;
       case 55: // 7
-        template.$('#black').click();
+        if (event.ctrlKey) {
+          template.$('#foul7').click();
+        } else {
+          template.$('#black').click();
+        }
         break;
       case 79: // O
         template.$('#break-off').click();
@@ -871,15 +887,19 @@ Template.Score_match_page.events({
         template.$('#re-rack').click();
         break;
       case 115: // F4
+        event.preventDefault();
         template.$('#foul4').click();
         break;
       case 116: // F5
+        event.preventDefault();
         template.$('#foul5').click();
         break;
       case 117: // F6
+        event.preventDefault();
         template.$('#foul6').click();
         break;
       case 118: // F7
+        event.preventDefault();
         template.$('#foul7').click();
         break;
       case 77: // M
