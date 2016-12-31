@@ -14,3 +14,6 @@ import './score-match-page.html';
 import './score-match-page.js';
 
 import './countries.html';
+
+import './div.html';
+import './div.js';

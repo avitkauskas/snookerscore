@@ -1,8 +1,10 @@
 <template name="Edit_match_page">
   <div id="cancel-catcher" tabindex="0" style="outline: none">
-    <div class="ui eight column grid container">
+    <div class="ui grid container">
+
       {{#with match}}
-      <div class="ui eight wide centered column">
+      {{#div class="sixteen wide mobile twelve wide tablet ten wide computer eight wide large screen centered column"}}
+      
         <div class="ui raised segment">
           <h2>Edit match data</h2>
           <div class="ui divider"></div>
@@ -49,13 +51,26 @@
                 <input type="text" name="players[]" value={{players.[1]}}>
               </div>
             </div>
-            <div class="ui center aligned basic segment">
-              <button id="update-button" class="ui big green button" type="submit"><i class="save icon"></i>Update Match</button>
-              <button id="delete-button" class="ui big red button"><i class="trash outline icon"></i>Delete Match</button>
-          </div>
+            <div class="ui grid">
+              <div class="computer tablet only centered row">
+                <div class="ui center aligned basic segment">
+                  <button id="update-button" class="ui big green button" type="submit"><i class="save icon"></i>Update Match</button>
+                  <button id="delete-button" class="ui big red button"><i class="trash outline icon"></i>Delete Match</button>
+                </div>
+              </div>
+              <div class="mobile only centered two column stackable row">
+                <div class="column">
+                  <button id="update-button" class="ui big green fluid button" type="submit"><i class="save icon"></i>Update Match</button>
+                </div>
+                <div class="column">
+                  <button id="delete-button" class="ui big red fluid button"><i class="trash outline icon"></i>Delete Match</button>
+                </div>
+              </div>
+            </div>
           </form>
         </div>
-      </div>
+
+      {{/div}}
       {{/with}}
 
       <!-- {{#unless Template.subscriptionsReady}}

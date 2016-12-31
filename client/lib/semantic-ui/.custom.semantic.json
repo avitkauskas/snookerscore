@@ -3,7 +3,7 @@
     "accordion": false,
     "ad": false,
     "api": false,
-    "breadcrumb": true,
+    "breadcrumb": false,
     "button": true,
     "card": false,
     "checkbox": true,
