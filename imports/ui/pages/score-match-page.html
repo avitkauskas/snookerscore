@@ -7,27 +7,27 @@
         <div class="row" style="background-color: rgba(0, 0, 0, 0.0470588);">
           <div class="one wide column">
             <div class="ui small right aligned header" >
-              <i class="play icon" style="visibility: {{playing1}};"></i>
+              <i class="play icon" style="visibility: {{ playing1 }};"></i>
             </div>
           </div>
           <div id="player1" class="four wide column" style="cursor: pointer;">
-            <div class="ui large right aligned header">
-              {{players.[0]}}
+            <div class="ui large center aligned header" style="font-family: Arial, Helvetica, sans-serif;">
+              {{{ twolines players.[0] }}}
             </div>
           </div>
           <div class="two wide center aligned column">
             <div class="ui small statistic">
               <div class="value">
-                {{status.score.[0]}}
+                {{ status.score.[0] }}
               </div>
             </div>
           </div>
           <div class="two wide center aligned column">
             <div class="ui mini statistic">
               <div class="value">
-                {{status.frames.[0]}}
-                <small>({{frames}})</small>
-                {{status.frames.[1]}}
+                {{ status.frames.[0] }}
+                <small>({{ frames }})</small>
+                {{ status.frames.[1] }}
               </div>
               <div class="label">Frames</div>
             </div>
@@ -35,18 +35,18 @@
           <div class="two wide center aligned column">
             <div class="ui small statistic">
               <div class="value">
-                {{status.score.[1]}}
+                {{ status.score.[1] }}
               </div>
             </div>
           </div>
           <div id="player2" class="four wide column" style="cursor: pointer;">
-            <div class="ui left aligned large header">
-              {{players.[1]}}
+            <div class="ui center aligned large header" style="font-family: Arial, Helvetica, sans-serif;">
+              {{{ twolines players.[1] }}}
             </div>
           </div>
           <div class="one wide column">
             <div class="ui small right aligned header">
-              <i class="play flipped icon" style="visibility: {{playing2}};"></i>
+              <i class="play flipped icon" style="visibility: {{ playing2 }};"></i>
             </div>
           </div>
         </div>
@@ -62,7 +62,7 @@
           </div>
           <div class="twelve wide column">
             <div class="ui center aligned small grey header">
-              {{message}}
+              {{ message }}
             </div>
           </div>
           <div class="two wide center aligned column"></div>
@@ -77,7 +77,7 @@
           <div class="two wide center aligned column">
             <div class="ui mini statistic">
               <div class="value">
-                {{status.break_points}}
+                {{ status.break_points }}
               </div>
               <div class="label">
                 Break

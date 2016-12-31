@@ -333,7 +333,11 @@ Template.Score_match_page.helpers({
       return 'disabled';
     }
     return '';
-  }
+  },
+
+  twolines(name) {
+    return name.replace(/ (?=[^ ]+$)/, "<br>").toUpperCase();
+  },
 
 });
 
