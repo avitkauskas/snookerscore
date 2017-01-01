@@ -1,7 +1,20 @@
 import { Template } from 'meteor/templating';
 
-// The Header menu does not use dropdown menus, but most menus do.
-// Here's how to do the required initialization for Semantic UI dropdown menus.
-Template.Header.onRendered(function enableDropDown() {
+Template.Header.onRendered(function() {
+
   this.$('.dropdown').dropdown();
+
+  this.$('#mobile-menu').on("click", function(e) {
+    e.preventDefault();
+    $('#vertical-menu').toggle();
+  });
+
+  this.$('#all-matches').on("click", function(e) {
+    $('#vertical-menu').toggle();
+  });
+
+  this.$('#new-match').on("click", function(e) {
+    $('#vertical-menu').toggle();
+  });
+
 });

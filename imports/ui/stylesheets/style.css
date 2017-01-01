@@ -41,3 +41,9 @@ body {
   line-height: 1;
   color: AliceBlue;
 }
+
+#vertical-menu {
+  margin-top: -20px;
+  margin-bottom: 20px;
+  display: none;
+}
