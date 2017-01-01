@@ -616,9 +616,9 @@ Template.Score_match_page.events({
           if (s.score[0] != s.score[1]) {
             s.black -= 1;
           } else { // re-spotted black
+            s.messages[s.player_at_the_table] = "";
             s.player_at_the_table = null;
             s.break_points = 0;
-            s.messages[s.player_at_the_table] = "";
           }
         } else {
           if (s.red < 1) {
