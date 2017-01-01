@@ -1,40 +1,32 @@
 <template name="Header">
-  <div class="ui grid container">
+  <div class="ui grid">
+
     <div class="computer tablet only row">
       <div class="ui top fixed borderless menu">
         <div class="ui container">
           <a class="item" href="{{pathFor 'Home_page'}}"><h1>SnookerScore</h1></a>
-          <a class="{{ isActiveRoute 'Home_page'}} item" href="{{ pathFor 'Home_page' }}"><i class="grid layout icon"></i>All Matches</a>
           {{#if currentUser}}
-          <a class="{{ isActiveRoute 'New_match_page'}} item" href="{{ pathFor 'New_match_page' }}"><i class="add square icon"></i>New Match</a>
+            <a class="{{ isActiveRoute 'Home_page'}} item" href="{{ pathFor 'Home_page' }}">
+              <i class="grid layout icon"></i>All Matches
+            </a>
+            <a class="{{ isActiveRoute 'New_match_page'}} item" href="{{ pathFor 'New_match_page' }}">
+              <i class="add square icon"></i>New Match
+            </a>
           {{/if}}
-          <div class="right menu">
-            {{#unless currentUser}}
-            <div class="item">Register and Sign in to mark your matches</div>
-            {{/unless}}
-            <a class="item">{{> loginButtons align="right" }}</a>
-          </div>
         </div>
       </div>
     </div>
+
     <div class="mobile only row">
       <div class="ui top fixed borderless menu">
-        <a id="mobile-menu" class="item"><i class="content icon"></i></a>
-        <a class="item" href="{{pathFor 'Home_page'}}"><h1>SnookerScore</h1></a>
-        <div class="right menu">
-          <a class="item">{{> loginButtons align="right" }}</a>
-        </div>
-      </div>
-      <div id="vertical-menu" class="ui vertical fluid menu">
-        <a id="all-matches" class="{{ isActiveRoute 'Home_page'}} item" href="{{ pathFor 'Home_page' }}">
-          <span><i class="grid layout icon"></i>All Matches</span>
-        </a>
+        <a class="item" href="{{pathFor 'Home_page'}}"><h2>SnookerScore</h2></a>
         {{#if currentUser}}
-        <a id="new-match" class="{{ isActiveRoute 'New_match_page'}} item" href="{{ pathFor 'New_match_page' }}">
-          <span><i class="add square icon"></i>New Match</span>
-        </a>
+          <a class="{{ isActiveRoute 'New_match_page'}} item" href="{{ pathFor 'New_match_page' }}">
+            <i class="add square icon"></i>New Match
+          </a>
         {{/if}}
       </div>
     </div>
+
   </div>
 </template>
