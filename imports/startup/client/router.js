@@ -25,7 +25,7 @@ FlowRouter.route('/matches/edit/:id', {
 FlowRouter.route('/matches/score/:id', {
   name: 'Score_match_page',
   action() {
-    BlazeLayout.render('Main_layout', { main: 'Score_match_page' });
+    BlazeLayout.render('Empty_layout', { main: 'Score_match_page' });
   }
 });
 
