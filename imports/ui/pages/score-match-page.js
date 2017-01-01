@@ -431,6 +431,9 @@ Template.Score_match_page.events({
       s.free_ball = false;
       s.score[s.player_at_the_table] += 1;
       s.break_points += 1;
+      let sep = s.messages[s.player_at_the_table] == "" ? "" : "・";
+      s.messages[s.player_at_the_table] += sep + "1";
+      s.messages[s.player_at_the_table ^ 1] = "";
       s.red -= 1;
       s.on_colour = true;
       this.status = s;
@@ -445,6 +448,9 @@ Template.Score_match_page.events({
       const points_scored = was_nominated ? ballOnValue(s) : 2;
       s.score[s.player_at_the_table] += points_scored;
       s.break_points += points_scored;
+      let sep = s.messages[s.player_at_the_table] == "" ? "" : "・";
+      s.messages[s.player_at_the_table] += sep + points_scored.toString();
+      s.messages[s.player_at_the_table ^ 1] = "";
       s.foul = false;
       s.miss = false;
       s.free_ball = false;
@@ -473,6 +479,9 @@ Template.Score_match_page.events({
       const points_scored = was_nominated ? ballOnValue(s) : 3;
       s.score[s.player_at_the_table] += points_scored;
       s.break_points += points_scored;
+      let sep = s.messages[s.player_at_the_table] == "" ? "" : "・";
+      s.messages[s.player_at_the_table] += sep + points_scored.toString();
+      s.messages[s.player_at_the_table ^ 1] = "";
       s.foul = false;
       s.miss = false;
       s.free_ball = false;
@@ -500,6 +509,9 @@ Template.Score_match_page.events({
       const was_nominated = s.free_ball && s.green > 0 ? true : false;
       const points_scored = was_nominated ? ballOnValue(s) : 4;
       s.score[s.player_at_the_table] += points_scored;
+      let sep = s.messages[s.player_at_the_table] == "" ? "" : "・";
+      s.messages[s.player_at_the_table] += sep + points_scored.toString();
+      s.messages[s.player_at_the_table ^ 1] = "";
       s.break_points += points_scored;
       s.foul = false;
       s.miss = false;
@@ -529,6 +541,9 @@ Template.Score_match_page.events({
       const points_scored = was_nominated ? ballOnValue(s) : 5;
       s.score[s.player_at_the_table] += points_scored;
       s.break_points += points_scored;
+      let sep = s.messages[s.player_at_the_table] == "" ? "" : "・";
+      s.messages[s.player_at_the_table] += sep + points_scored.toString();
+      s.messages[s.player_at_the_table ^ 1] = "";
       s.foul = false;
       s.miss = false;
       s.free_ball = false;
@@ -557,6 +572,9 @@ Template.Score_match_page.events({
       const points_scored = was_nominated ? ballOnValue(s) : 6;
       s.score[s.player_at_the_table] += points_scored;
       s.break_points += points_scored;
+      let sep = s.messages[s.player_at_the_table] == "" ? "" : "・";
+      s.messages[s.player_at_the_table] += sep + points_scored.toString();
+      s.messages[s.player_at_the_table ^ 1] = "";
       s.foul = false;
       s.miss = false;
       s.free_ball = false;
@@ -585,6 +603,9 @@ Template.Score_match_page.events({
       const points_scored = was_nominated ? ballOnValue(s) : 7;
       s.score[s.player_at_the_table] += points_scored;
       s.break_points += points_scored;
+      let sep = s.messages[s.player_at_the_table] == "" ? "" : "・";
+      s.messages[s.player_at_the_table] += sep + points_scored.toString();
+      s.messages[s.player_at_the_table ^ 1] = "";
       s.foul = false;
       s.miss = false;
       s.free_ball = false;
@@ -597,6 +618,7 @@ Template.Score_match_page.events({
           } else { // re-spotted black
             s.player_at_the_table = null;
             s.break_points = 0;
+            s.messages[s.player_at_the_table] = "";
           }
         } else {
           if (s.red < 1) {
@@ -622,6 +644,9 @@ Template.Score_match_page.events({
       s.free_ball = false;
       s.foul_on_colour = s.on_colour;
       s.score[s.player_at_the_table ^ 1] += 4;
+      let sep = s.messages[s.player_at_the_table] == "" ? "" : "・";
+      s.messages[s.player_at_the_table] += sep + "F4";
+      s.messages[s.player_at_the_table ^ 1] = "";
       s.player_at_the_table ^= 1;
       s.break_points = 0;
       if (!s.colours_only) {
@@ -644,6 +669,9 @@ Template.Score_match_page.events({
       s.free_ball = false;
       s.foul_on_colour = s.on_colour;
       s.score[s.player_at_the_table ^ 1] += 5;
+      let sep = s.messages[s.player_at_the_table] == "" ? "" : "・";
+      s.messages[s.player_at_the_table] += sep + "F5";
+      s.messages[s.player_at_the_table ^ 1] = "";
       s.player_at_the_table ^= 1;
       s.break_points = 0;
       if (!s.colours_only) {
@@ -666,6 +694,9 @@ Template.Score_match_page.events({
       s.free_ball = false;
       s.foul_on_colour = s.on_colour;
       s.score[s.player_at_the_table ^ 1] += 6;
+      let sep = s.messages[s.player_at_the_table] == "" ? "" : "・";
+      s.messages[s.player_at_the_table] += sep + "F6";
+      s.messages[s.player_at_the_table ^ 1] = "";
       s.player_at_the_table ^= 1;
       s.break_points = 0;
       if (!s.colours_only) {
@@ -688,6 +719,9 @@ Template.Score_match_page.events({
       s.free_ball = false;
       s.foul_on_colour = s.on_colour;
       s.score[s.player_at_the_table ^ 1] += 7;
+      let sep = s.messages[s.player_at_the_table] == "" ? "" : "・";
+      s.messages[s.player_at_the_table] += sep + "F7";
+      s.messages[s.player_at_the_table ^ 1] = "";
       s.player_at_the_table ^= 1;
       s.break_points = 0;
       if (!s.colours_only) {
@@ -729,6 +763,7 @@ Template.Score_match_page.events({
       s.miss = false;
       s.free_ball = false;
       s.player_at_the_table ^= 1;
+      s.messages[s.player_at_the_table] = "";
       this.status = s;
       updateStatus(this);
     }
@@ -752,6 +787,7 @@ Template.Score_match_page.events({
     let s = this.status;
     if (s.foul) {
       if (s.red > 0) s.red -= 1;
+      s.messages[s.player_at_the_table ^ 1] += "・R" + s.red.toString();
       if (s.red < 1) {
         s.colours_only = true;
         s.on_colour = true;
