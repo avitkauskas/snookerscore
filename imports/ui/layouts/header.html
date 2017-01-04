@@ -1,32 +1,36 @@
 <template name="Header">
-  <div class="ui grid">
-
-    <div class="computer tablet only row">
-      <div class="ui top fixed borderless menu">
-        <div class="ui container">
-          <a class="item" href="{{pathFor 'Home_page'}}"><h1>SnookerScore</h1></a>
-          {{#if currentUser}}
-            <a class="{{ isActiveRoute 'Home_page'}} item" href="{{ pathFor 'Home_page' }}">
-              <i class="grid layout icon"></i>All Matches
-            </a>
-            <a class="{{ isActiveRoute 'New_match_page'}} item" href="{{ pathFor 'New_match_page' }}">
-              <i class="add square icon"></i>New Match
-            </a>
-          {{/if}}
-        </div>
-      </div>
-    </div>
-
-    <div class="mobile only row">
-      <div class="ui top fixed borderless menu">
-        <a class="item" href="{{pathFor 'Home_page'}}"><h2>SnookerScore</h2></a>
-        {{#if currentUser}}
-          <a class="{{ isActiveRoute 'New_match_page'}} item" href="{{ pathFor 'New_match_page' }}">
-            <i class="add square icon"></i>New Match
-          </a>
-        {{/if}}
-      </div>
-    </div>
-
-  </div>
+        <nav id="top-menu">
+            <div class="navbeer ui top fixed borderless menu">
+                <div class="ui container">
+                    <div class="navbeer-sandwich ui dropdown item">
+                        <i class="navbeer-sandwich-icon content large icon"></i>
+                        <div class="navbeer-sandwich-content menu">
+                            <!--Keep empty-->
+                        </div>
+                    </div>
+                    <a class="navbeer-brand item" href="{{pathFor 'Home_page'}}">
+                        <div class="ui large header">
+                            SnookerScore
+                        </div>
+                    </a>
+                    <div class="navbeer-menu left menu">
+                        {{#if currentUser}}
+                          <a class="{{ isActiveRoute 'Home_page'}}
+                                item navbeer-collapsable-item"
+                                href="{{ pathFor 'Home_page' }}">
+                            <span><i class="grid layout icon"></i>All Matches</span>
+                          </a>
+                          <a class="{{ isActiveRoute 'New_match_page'}}
+                                item navbeer-collapsable-item"
+                                href="{{ pathFor 'New_match_page' }}">
+                            <span><i class="add square icon"></i>New Match</span>
+                          </a>
+                        {{/if}}
+                    </div>
+                    <div class="navbeer-non-collapse right menu" id="non-collapse">
+                        <a class="item">{{> loginButtons align="right" }}</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
 </template>

@@ -17,3 +17,5 @@ import './countries.html';
 
 import './div.html';
 import './div.js';
+
+import './navbeer.js';
