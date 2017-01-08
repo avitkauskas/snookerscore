@@ -7,8 +7,8 @@
                 <table class="ui table unstackable">
                   <thead>
                 		<tr>
-                            <th>Place</th>
-                		    <th>Event</th>
+                            <th>Place & Event</th>
+                		    <!-- <th>Event</th> -->
                 		    <th class="single line center aligned">Date &amp; Time</th>
                 		    <th colspan="3" class="single line center aligned">Match &amp; Score</th>
                 		    <th>Actions</th>
@@ -17,8 +17,14 @@
                   <tbody>
                       {{#each match in matches}}
                         <tr>
-                      		<td><i class="{{toLowerCase match.country}} flag"></i>{{match.country}}, {{match.city}} - {{match.venue}}</td>
-                      		<td>{{match.event}}</td>
+                      		<td>
+                                <i class="{{toLowerCase match.country}} flag"></i>
+                                <span style="white-space: nowrap;">{{match.country}},</span>
+                                <span style="white-space: nowrap;">{{match.city}}</span>
+                                <span style="white-space: nowrap;">- {{match.venue}}</span>
+                                <span style="white-space: nowrap;">- {{match.event}}</span>
+                            </td>
+                      		<!-- <td>{{match.event}}</td> -->
                       		<td class="center aligned">{{match.datetime}}</td>
                       		<td class="right aligned">{{match.players.[0]}}</td>
                       		<td class="single line center aligned">
