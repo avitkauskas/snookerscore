@@ -3,7 +3,8 @@ body {
 }
 
 .key {
-  width: 16px;
+  /*width: 16px;*/
+  width: 24px;
   text-align: center;
 }
 
