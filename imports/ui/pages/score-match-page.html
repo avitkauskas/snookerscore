@@ -16,7 +16,9 @@
 
         <div class="ui padded middle aligned grid">
 
-            <div class="row" style="background-color: lightGrey">
+            <!-- Computer only first score row -->
+
+            <div class="computer only row" style="background-color: lightGrey">
                 <div class="one wide column">
                     <div class="ui small right aligned header" >
                         <i class="play icon" style="visibility: {{ playing1 }};"></i>
@@ -63,30 +65,76 @@
                 </div>
             </div>
 
+            <!-- Mobile only first score row -->
+
+            <div class="mobile tablet only row" style="background-color: lightGrey">
+                <div id="player1" class="seven wide column" style="cursor: pointer;">
+                    <div class="ui center aligned small header" style="font-family: Arial, Helvetica, sans-serif;">
+                        {{{ twolines players.[0] }}}
+                    </div>
+                </div>
+                <div class="two wide center aligned column" style="white-space: nowrap;">
+                        <i class="play flipped icon" style="visibility: {{ playing1 }};">
+                        </i><i class="play icon" style="visibility: {{ playing2 }};"></i>
+                </div>
+                <div id="player2" class="seven wide column" style="cursor: pointer;">
+                    <div class="ui center aligned small header" style="font-family: Arial, Helvetica, sans-serif;">
+                        {{{ twolines players.[1] }}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="mobile tablet only row" style="background-color: #e6e6e6">
+                <div class="five wide center aligned column">
+                    <div class="ui small statistic">
+                        <div class="value">
+                            {{ status.score.[0] }}
+                        </div>
+                    </div>
+                </div>
+                <div class="six wide center aligned column">
+                    <div class="ui mini statistic">
+                        <div class="value">
+                            {{ status.frames.[0] }}
+                            <small>({{ frames }})</small>
+                            {{ status.frames.[1] }}
+                        </div>
+                        <div class="label">Frames</div>
+                    </div>
+                </div>
+                <div class="five wide center aligned column">
+                    <div class="ui small statistic">
+                        <div class="value">
+                            {{ status.score.[1] }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             {{#if message_to_display}}
             <div class="row" style="background-color: rgb(249, 250, 251);">
                 <!-- to keep the hight of the row -->
-                <div class="two wide center aligned column" style="visibility: hidden;">
+                <div class="one wide center aligned column" style="visibility: hidden;">
                     <div class="ui mini statistic">
                         <div class="value">0</div>
-                        <div class="label">Break</div>
+                        <div class="label">0</div>
                     </div>
                 </div>
-                <div class="twelve wide column">
+                <div class="fourteen wide column">
                     <div class="ui center aligned small grey header">
                         {{ message }}
                     </div>
                 </div>
-                <div class="two wide center aligned column"></div>
+                <div class="one wide center aligned column"></div>
             </div>
             {{else}}
             <div class="three column row" style="background-color: rgb(249, 250, 251);">
-                <div class="seven wide column">
+                <div class="six wide column">
                     <div id="message-left" class="ui center aligned small grey header">
                         {{ status.messages.[0] }}
                     </div>
                 </div>
-                <div class="two wide center aligned column">
+                <div class="four wide center aligned column">
                     <div class="ui mini statistic">
                         <div class="value">
                             {{ status.break_points }}
@@ -96,7 +144,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="seven wide column">
+                <div class="six wide column">
                     <div id="message-right" class="ui center aligned small grey header">
                         {{ status.messages.[1] }}
                     </div>
