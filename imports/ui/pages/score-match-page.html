@@ -68,26 +68,28 @@
             <!-- Mobile only first score row -->
 
             <div class="mobile tablet only row" style="background-color: lightGrey">
-                <div id="player1" class="seven wide column" style="cursor: pointer;">
+                <div id="player1" class="eight wide right aligned column" style="cursor: pointer;">
                     <div class="ui center aligned small header" style="font-family: Arial, Helvetica, sans-serif;">
                         {{{ twolines players.[0] }}}
                     </div>
                 </div>
-                <div class="two wide center aligned column" style="white-space: nowrap;">
-                        <i class="play flipped icon" style="visibility: {{ playing1 }};">
-                        </i><i class="play icon" style="visibility: {{ playing2 }};"></i>
-                </div>
-                <div id="player2" class="seven wide column" style="cursor: pointer;">
+                <div id="player2" class="eight wide left aligned column" style="cursor: pointer;">
                     <div class="ui center aligned small header" style="font-family: Arial, Helvetica, sans-serif;">
                         {{{ twolines players.[1] }}}
                     </div>
                 </div>
             </div>
 
+            <!-- Mobile only second score row -->
+
             <div class="mobile tablet only row" style="background-color: #e6e6e6">
+                <!-- <div class="one wide left aligned column">
+                    <span style="visibility: {{ playing1 }};">▶︎</span>
+                </div> -->
                 <div class="five wide center aligned column">
-                    <div class="ui small statistic">
+                    <div class="ui mini statistic">
                         <div class="value">
+                            <span style="visibility: {{ playing1 }};">▶︎</span>
                             {{ status.score.[0] }}
                         </div>
                     </div>
@@ -103,12 +105,16 @@
                     </div>
                 </div>
                 <div class="five wide center aligned column">
-                    <div class="ui small statistic">
+                    <div class="ui mini statistic">
                         <div class="value">
                             {{ status.score.[1] }}
+                            <span style="visibility: {{ playing2 }};">◀︎</span>
                         </div>
                     </div>
                 </div>
+                <!-- <div class="one wide right aligned column">
+                    <span style="visibility: {{ playing2 }};">◀︎</span>
+                </div> -->
             </div>
 
             {{#if message_to_display}}
@@ -588,7 +594,7 @@
 
         </div>
 
-    </div> <!-- container -->
+    </div>  <!-- container -->
 </div> <!-- Key catcher -->
 
 {{/with}}
