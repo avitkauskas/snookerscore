@@ -16,7 +16,7 @@ Just open a **View** link of the match for score display on one device and click
 You mark the score by clicking the appropriately colored balls on the screen or pushing the buttons to mark fouls, break-offs and other actions. On computer, you can also use the keyboard shortcuts that are indicated on the left side of the buttons. Some buttons have more than one keyboard shortcut that are listed in the table bellow:
 
 Action | Keyboard Shortcut | | Action | Keyboard Shortcut
-:----: | :---------------: |-| :----: | :---------------:
+:----: | :---------------: |---| :----: | :---------------:
 Balls | **1**, **2**, **3**, **4**, **5**, **6**, **7** || Break Off | **O**
 End Break | **E** | | Re-Rack | **R**
 Foul 4 | **F4** or **Ctrl+4** | | Foul 5 | **F5** or **Ctrl+5**
@@ -29,10 +29,10 @@ Undo | **U** or **Z** | | Redo | **D** or **Y**
 
 ## Technology
 
-SnookerScore is made using
+SnookerScore is made as a hobby project using
 the JavaScript App Platform _[Meteor](https://www.meteor.com)_  
 and CSS framework _[Semantic UI](http://semantic-ui.com)_.
 
 ## Contact
 
-All your ideas and suggestions are welcome here on [GitHub](https://github.com/avitkauskas/snookerscore) or pleaser email them to snookerscore@vitkauskas.lt
+All your ideas and suggestions are welcome here on [GitHub](https://github.com/avitkauskas/snookerscore) or please email them to snookerscore@vitkauskas.lt
