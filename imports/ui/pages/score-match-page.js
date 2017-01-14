@@ -176,7 +176,7 @@ Template.Score_match_page.helpers({
     return '';
   },
 
-  non_striker_disabled() {
+  help_disabled() {
     // TODO
     return 'disabled';
   },
@@ -402,7 +402,7 @@ Template.Score_match_page.events({
     }
   },
 
-  'click #non-striker'(event, template) {
+  'click #help'(event, template) {
     // TODO
   },
 
@@ -632,9 +632,6 @@ Template.Score_match_page.events({
       updateStatus(this);
     }
   },
-
-  // TODO Non-striker foul when opponent is on colour
-  // TODO After foul striker should continue on colour
 
   'click #foul4'(event, template) {
     let s = this.status;
@@ -917,8 +914,8 @@ Template.Score_match_page.events({
       case 69: // E
         template.$('#end-break').click();
         break;
-      case 69: // N
-        template.$('#non-striker').click();
+      case 72: // H
+        template.$('help').click();
         break;
       case 76: // L
         template.$('#red-lost').click();
