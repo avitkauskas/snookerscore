@@ -1,13 +1,12 @@
 ## SnookerScore
 
+### Scorekeeping application for snooker fans
 
-### Score keeping application for Snooker fans
-
-This is a free to use web-based open source snooker score keeping (marking) application for real-time score display for the players and spectators.
+This is a web-based open source snooker scorekeeping (marking) application for real-time score display at the table for the players and spectators.
 
 All you need to mark and display the score are two internet connected devices (TV, computer, tablet or mobile phone).
 
-Go to the **[SnookerScore web site](http://snookerscore.vitkauskas.lt)** (or clone the depository and host the application on your own server if preferred), create a match by entering it's place and title, the names of the players and the number of frames to play - and you are good to go.
+Go to the free to use **[SnookerScore web site](http://snookerscore.vitkauskas.lt)** (or clone the depository and host the application on your own server if preferred), create a match by entering it's place and title, the names of the players and the number of frames to play - and you are good to go.
 
 Just open a **View** link of the match for score display on one device and click the **Mark** link on another device to start the marking of the match. As you mark the score on your device, the score is automatically updated on all the other devices displaying the score in real-time.
 
@@ -29,9 +28,7 @@ Undo | **U** or **Z** | | Redo | **D** or **Y**
 
 ## Technology
 
-SnookerScore is made as a hobby project using
-the JavaScript App Platform _[Meteor](https://www.meteor.com)_  
-and CSS framework _[Semantic UI](http://semantic-ui.com)_.
+SnookerScore is made as a hobby project using the JavaScript App Platform _[Meteor](https://www.meteor.com)_ and CSS framework _[Semantic UI](http://semantic-ui.com)_.
 
 ## Contact
 
