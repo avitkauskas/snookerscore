@@ -16,15 +16,17 @@ You mark the score by clicking the appropriately colored balls on the screen or 
 
 Action | Keyboard Shortcut | | Action | Keyboard Shortcut
 :----: | :---------------: |---| :----: | :---------------:
-Balls | **1**, **2**, **3**, **4**, **5**, **6**, **7** || Break Off | **O**
-End Break | **E** | | Re-Rack | **R**
-Foul 4 | **F4** or **Ctrl+4** | | Foul 5 | **F5** or **Ctrl+5**
-Foul 6 | **F6** or **Ctrl+6** | | Foul 7 | **F7** or **Ctrl+7**
-Miss | **M** | | Free Ball | **F**
-Put Back | **B** | | Play Again | **A**
-Red Lost | **L** | | Help | **H** or **F1**
-Frame Won | **W** | | Conceded | **C**
-Undo | **U** or **Z** | | Redo | **D** or **Y**
+Balls | **`1`**, **`2`**, **`3`**, **`4`**, **`5`**, **`6`**, **`7`** || Break Off | **`O`**
+End Break | **`E`** | | Re-Rack | **`R`**
+Foul 4 | **`F4`** or **`Ctrl`+`4`** | | Foul 5 | **`F5`** or **`Ctrl`+`5`**
+Foul 6 | **`F6`** or **`Ctrl`+`6`** | | Foul 7 | **`F7`** or **`Ctrl`+`7`**
+Miss | **`M`** | | Free Ball | **`F`**
+Put Back | **`B`** | | Play Again | **`A`**
+Red Lost | **`L`** | | Help | **`H`** or **`F1`**
+Frame Won | **`W`** | | Conceded | **`C`**
+Undo | **`U`** or **`Z`** | | Redo | **`D`** or **`Y`**
+
+Hit **`ESC`** from anywhere you are to go back to the main page. Your score is always safe - you can always come back and continue from where you left.
 
 ## Technology
 
