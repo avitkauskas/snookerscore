@@ -30,7 +30,7 @@ Hit **`ESC`** from anywhere you are to go back to the main page. Your score is a
 
 ## Technology
 
-SnookerScore is made as a hobby project using the JavaScript App Platform _[Meteor](https://www.meteor.com)_ and CSS framework _[Semantic UI](http://semantic-ui.com)_.
+SnookerScore is made as a hobby project using the JavaScript App Platform [Meteor](https://www.meteor.com) and CSS framework [Semantic UI](http://semantic-ui.com).
 
 ## Contact
 
