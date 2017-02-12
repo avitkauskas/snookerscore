@@ -6,7 +6,7 @@ This is a web-based open source snooker scorekeeping (marking) application for r
 
 All you need to mark and display the score are two internet connected devices (TV, computer, tablet or mobile phone).
 
-Go to the free to use **[SnookerScore web site](http://snookerscore.vitkauskas.lt)** (or clone the depository and host the application on your own server if preferred), create a match by entering it's place and title, the names of the players and the number of frames to play - and you are good to go.
+Go to the free to use **[SnookerScore web site](http://snookerscore.vitkauskas.lt)** (or clone the depository and host the application on your own server if preferred), sign-up, create a match by entering it's place and title, the names of the players and the number of frames to play - and you are good to go.
 
 Just open a **View** link of the match for score display on one device and click the **Mark** link on another device to start the marking of the match. As you mark the score on your device, the score is automatically updated on all the other devices displaying the score in real-time.
 
@@ -22,11 +22,11 @@ Foul 4 | **`F4`** or **`Ctrl`+`4`** | | Foul 5 | **`F5`** or **`Ctrl`+`5`**
 Foul 6 | **`F6`** or **`Ctrl`+`6`** | | Foul 7 | **`F7`** or **`Ctrl`+`7`**
 Miss | **`M`** | | Free Ball | **`F`**
 Put Back | **`B`** | | Play Again | **`A`**
-Red Lost | **`L`** | | Help | **`H`** or **`F1`**
-Frame Won | **`W`** | | Conceded | **`C`**
+Red Lost | **`L`** | | Home Page | **`Esc`**
 Undo | **`U`** or **`Z`** | | Redo | **`D`** or **`Y`**
+Frame Won | **`W`** | | Conceded | **`C`**
 
-Hit **`ESC`** from anywhere you are to go back to the main page. Your score is always safe - you can always come back and continue from where you left.
+You can always go back to the home page by hitting **`ESC`**. Your score is always safe - you can come back anytime and continue from where you left.
 
 ## Technology
 

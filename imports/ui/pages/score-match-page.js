@@ -176,11 +176,6 @@ Template.Score_match_page.helpers({
     return '';
   },
 
-  help_disabled() {
-    // TODO
-    return 'disabled';
-  },
-
   red_lost_disabled() {
     let s = this.status;
     if (!s ||
@@ -400,10 +395,6 @@ Template.Score_match_page.events({
       this.status = s;
       updateStatus(this);
     }
-  },
-
-  'click #help'(event, template) {
-    // TODO
   },
 
   'click #re-rack'(event, template) {
@@ -913,9 +904,6 @@ Template.Score_match_page.events({
         break;
       case 69: // E
         template.$('#end-break').click();
-        break;
-      case 72: // H
-        template.$('help').click();
         break;
       case 76: // L
         template.$('#red-lost').click();
