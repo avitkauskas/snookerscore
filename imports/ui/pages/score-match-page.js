@@ -384,6 +384,7 @@ Template.Score_match_page.events({
       s.miss = false;
       s.free_ball = false;
       s.player_at_the_table ^= 1;
+      s.messages[s.player_at_the_table] = "";
       s.break_points = 0;
       if (!s.colours_only) {
         if (s.red < 1) {
