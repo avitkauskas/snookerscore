@@ -2,16 +2,8 @@
 
     $.fn.navBeer = function () {
 
-        // self = this;
-
-        // console.log("non-collapse:", jQuery('.navbeer-non-collapse', this));
-        // console.log("non-collapse:", jQuery('#login-name-link', this));
-        // console.log("menu:", jQuery('.navbeer-menu', this));
-        // console.log("brand:", jQuery('.navbeer-brand', this));
-
         var
             navBeerSandwich = jQuery('.navbeer-sandwich', this),
-            // navBeerNonCollapse = jQuery('.navbeer-non-collapse', this),
             navBeerNonCollapse = document.getElementById('non-collapse');
             navBeerBrand = jQuery('.navbeer-brand', this),
             navBeerBrandWidth = 150,
@@ -22,14 +14,6 @@
             navBeerWidth = navBeerBrandWidth + navBeerMenuWidth + navBeerNonCollapseWidth + menuWidthCompensation,
             navBeerFit = navBeerBrandWidth + navBeerNonCollapseWidth + menuWidthCompensation,
             navBeerCollapse = function () {
-
-                // console.log("non-collapse:", navBeerNonCollapse);
-                // console.log("menu:", navBeerMenu);
-                // console.log("brand:", navBeerBrand);
-                // console.log("width:", navBeerWidth);
-                // console.log("fit:", navBeerFit);
-                // console.log("widow:", jQuery(window).width());
-
                 if (jQuery(window).width() < navBeerWidth) {
                     // Hide Brand if does not fit
                     if (jQuery(window).width() < navBeerFit) {

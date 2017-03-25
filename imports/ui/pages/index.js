@@ -1,3 +1,6 @@
+import './about-page.html';
+import './about-page.js';
+
 import './list-matches-page.html';
 import './list-matches-page.js';
 

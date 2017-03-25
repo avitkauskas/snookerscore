@@ -1,6 +1,13 @@
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 
+FlowRouter.route('/about', {
+  name: 'About_page',
+  action() {
+    BlazeLayout.render('Main_layout', { main: 'About_page' });
+  }
+});
+
 FlowRouter.route('/', {
   name: 'Home_page',
   action() {
