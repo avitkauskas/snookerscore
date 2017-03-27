@@ -23,6 +23,7 @@ Meteor.methods({
     }
     match.owner = this.userId;
     match.status = INITIAL_STATUS;
+    match.status.red = match.reds;
     match.status_seq = 0;
     match.status_max = 0;
     const matchId = Matches.insert(match);

@@ -406,6 +406,7 @@ Template.Score_match_page.events({
       let player_to_break = s.player_to_break;
       // reset status
       s = INITIAL_STATUS;
+      s.red = this.reds;
       // restore saved status items
       s.frames = frames;
       s.player_to_break = player_to_break;
@@ -796,6 +797,7 @@ Template.Score_match_page.events({
       let player_to_break = s.player_to_break;
       // reset status
       s = INITIAL_STATUS;
+      s.red = this.reds;
       // restore saved status items
       s.frames = frames;
       s.player_to_break = player_to_break;
@@ -818,6 +820,7 @@ Template.Score_match_page.events({
       let player_to_break = s.player_to_break;
       // reset status
       s = INITIAL_STATUS;
+      s.red = this.reds;
       // restore saved status items
       s.frames = frames;
       s.player_to_break = player_to_break;
