@@ -331,7 +331,7 @@ Template.Score_match_page.helpers({
   },
 
   twolines(name) {
-    return name.replace(/ (?=[^ ]+$)/, "<br>").toUpperCase();
+    return name ? name.replace(/ (?=[^ ]+$)/, "<br>").toUpperCase() : "";
   },
 
 });

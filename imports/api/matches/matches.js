@@ -14,6 +14,12 @@ export const INITIAL_STATUS = {
   messages: ["",""]
 };
 
+export const isAdmin = function() {
+    const currentUser = Meteor.user();
+    return "emails" in currentUser &&
+        currentUser.emails[0].address == "alvydas@vitkauskas.lt"
+}
+
 Meteor.methods({
 
   'matches.insert'(match) {
@@ -36,7 +42,7 @@ Meteor.methods({
   'matches.remove'(matchId) {
     // Make sure the current user is the owner
     const match = Matches.findOne(matchId);
-    if (!match || match.owner !== this.userId) {
+    if (!match || match.owner !== this.userId && !isAdmin()) {
       throw new Meteor.Error('not-authorized');
     }
     Matches.remove(matchId);
@@ -46,7 +52,7 @@ Meteor.methods({
   'matches.update'(matchId, attributes) {
     // Make sure the current user is the owner
     const match = Matches.findOne(matchId);
-    if (!match || match.owner !== this.userId) {
+    if (!match || match.owner !== this.userId && !isAdmin()) {
       throw new Meteor.Error('not-authorized');
     }
     Matches.update(matchId, {$set: attributes});

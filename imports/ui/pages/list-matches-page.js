@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 
-import { Matches } from '../../api/matches/matches.js';
+import { Matches, isAdmin } from '../../api/matches/matches.js';
 
 Template.List_matches_page.onCreated(function() {
   this.subscribe('matches');
@@ -12,6 +12,6 @@ Template.List_matches_page.helpers({
     return Matches.find({}, {sort: {datetime: -1}});
   },
   isOwner(owner) {
-    return owner === Meteor.userId();
+    return owner === Meteor.userId() || isAdmin();
   }
 });

@@ -25,7 +25,7 @@ Template.View_match_page.helpers({
   },
 
   twolines(name) {
-    return name.replace(/ (?=[^ ]+$)/, "<br>");
+    return name ? name.replace(/ (?=[^ ]+$)/, "<br>").toUpperCase() : "";
   },
 
   break1() {
@@ -48,6 +48,7 @@ Template.View_match_page.helpers({
 
   match_not_finished() {
     let s = this.status;
+    if (!s) return false;
     if (s.frames[0] >= (this.frames + 1) / 2 ||
         s.frames[1] >= (this.frames + 1) / 2)
     {
