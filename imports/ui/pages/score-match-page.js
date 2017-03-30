@@ -64,6 +64,42 @@ Template.Score_match_page.helpers({
     }
   },
 
+  playing1_display() {
+    let s = this.status;
+    if (s && s.player_at_the_table === 0) {
+      return 'block';
+    } else {
+      return 'none';
+    }
+  },
+
+  playing2_display() {
+    let s = this.status;
+    if (s && s.player_at_the_table === 1) {
+      return 'block';
+    } else {
+      return 'none';
+    }
+  },
+
+  playing1_highlight() {
+    let s = this.status;
+    if (s && s.player_at_the_table === 0) {
+      return '#ffe033';
+    } else {
+      return 'lightGrey';
+    }
+  },
+
+  playing2_highlight() {
+    let s = this.status;
+    if (s && s.player_at_the_table === 1) {
+      return '#ffe033';
+    } else {
+      return 'lightGrey';
+    }
+  },
+
   red_disabled() {
     let s = this.status;
     if (!s ||

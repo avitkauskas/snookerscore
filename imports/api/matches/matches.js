@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 
 import { StatusLog } from '../statuslog/statuslog.js';
+import { isAdmin } from '../utils.js';
 
 export const Matches = new Mongo.Collection('Matches');
 
@@ -13,12 +14,6 @@ export const INITIAL_STATUS = {
   colours_only: false, on_colour: false, foul_on_colour: false,
   messages: ["",""]
 };
-
-export const isAdmin = function() {
-    const currentUser = Meteor.user();
-    return "emails" in currentUser &&
-        currentUser.emails[0].address == "alvydas@vitkauskas.lt"
-}
 
 Meteor.methods({
 

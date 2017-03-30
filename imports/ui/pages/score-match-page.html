@@ -21,11 +21,14 @@
             <div class="computer only row" style="background-color: lightGrey">
                 <div class="one wide column">
                     <div class="ui small right aligned header" >
-                        <i class="play icon" style="visibility: {{ playing1 }};"></i>
+                        <i class="play icon"
+                          style="visibility: {{ playing1 }};"></i>
                     </div>
                 </div>
-                <div id="player1" class="four wide column" style="cursor: pointer;">
-                    <div class="ui large center aligned header" style="font-family: Arial, Helvetica, sans-serif;">
+                <div id="player1" class="four wide column"
+                  style="cursor: pointer;">
+                    <div class="ui large center aligned header"
+                      style="font-family: Arial, Helvetica, sans-serif;">
                         {{{ twolines players.[0] }}}
                     </div>
                 </div>
@@ -53,68 +56,29 @@
                         </div>
                     </div>
                 </div>
-                <div id="player2" class="four wide column" style="cursor: pointer;">
-                    <div class="ui center aligned large header" style="font-family: Arial, Helvetica, sans-serif;">
+                <div id="player2" class="four wide column"
+                  style="cursor: pointer;">
+                    <div class="ui center aligned large header"
+                      style="font-family: Arial, Helvetica, sans-serif;">
                         {{{ twolines players.[1] }}}
                     </div>
                 </div>
                 <div class="one wide column">
                     <div class="ui small right aligned header">
-                        <i class="play flipped icon" style="visibility: {{ playing2 }};"></i>
+                        <i class="play flipped icon"
+                          style="visibility: {{ playing2 }};"></i>
                     </div>
                 </div>
             </div>
 
-            <!-- Mobile only first score row -->
-
-            <div class="mobile tablet only row" style="background-color: lightGrey">
-                <div id="player1" class="eight wide right aligned column" style="cursor: pointer;">
-                    <div class="ui center aligned small header" style="font-family: Arial, Helvetica, sans-serif;">
-                        {{{ twolines players.[0] }}}
-                    </div>
-                </div>
-                <div id="player2" class="eight wide left aligned column" style="cursor: pointer;">
-                    <div class="ui center aligned small header" style="font-family: Arial, Helvetica, sans-serif;">
-                        {{{ twolines players.[1] }}}
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mobile only second score row -->
-
-            <div class="mobile tablet only row" style="background-color: #e6e6e6">
-                <div class="five wide center aligned column">
-                    <div class="ui mini statistic">
-                        <div class="value">
-                            <span style="visibility: {{ playing1 }};">▶︎</span>
-                            {{ status.score.[0] }}
-                        </div>
-                    </div>
-                </div>
-                <div class="six wide center aligned column">
-                    <div class="ui mini statistic">
-                        <div class="value">
-                            {{ status.frames.[0] }}
-                            <small>({{ frames }})</small>
-                            {{ status.frames.[1] }}
-                        </div>
-                        <div class="label">Frames</div>
-                    </div>
-                </div>
-                <div class="five wide center aligned column">
-                    <div class="ui mini statistic">
-                        <div class="value">
-                            {{ status.score.[1] }}
-                            <span style="visibility: {{ playing2 }};">◀︎</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- Computer only second score row -->
 
             {{#if message_to_display}}
-            <div class="row" style="background-color: rgb(249, 250, 251);">
+            <div class="computer only row"
+              style="background-color: rgb(249, 250, 251);">
                 <!-- to keep the hight of the row -->
-                <div class="one wide center aligned column" style="visibility: hidden;">
+                <div class="one wide center aligned column"
+                  style="visibility: hidden;">
                     <div class="ui mini statistic">
                         <div class="value">0</div>
                         <div class="label">0</div>
@@ -125,12 +89,14 @@
                         {{ message }}
                     </div>
                 </div>
-                <div class="one wide center aligned column"></div>
+                <div class="one wide center aligned column">
+                </div>
             </div>
             {{else}}
-            <div class="three column row" style="background-color: rgb(249, 250, 251);">
+            <div class="computer only three column row"
+              style="background-color: rgb(249, 250, 251);">
                 <div class="six wide column">
-                    <div id="message-left" class="ui center aligned small grey header">
+                    <div class="ui center aligned small grey header">
                         {{ status.messages.[0] }}
                     </div>
                 </div>
@@ -145,8 +111,118 @@
                     </div>
                 </div>
                 <div class="six wide column">
-                    <div id="message-right" class="ui center aligned small grey header">
+                    <div class="ui center aligned small grey header">
                         {{ status.messages.[1] }}
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+
+            <!-- Mobile and tablet only first score row -->
+
+            <div class="mobile tablet only row">
+                <div id="player1" class="eight wide right aligned squeezed column"
+                  style="background-color: {{ playing1_highlight }};">
+                    <div class="ui center aligned small header"
+                      style="font-family: Arial, Helvetica, sans-serif;">
+                        {{{ twolines players.[0] }}}
+                    </div>
+                </div>
+                <div id="player2" class="eight wide left aligned squeezed column"
+                  style="background-color: {{ playing2_highlight }};">
+                    <div class="ui center aligned small header"
+                      style="font-family: Arial, Helvetica, sans-serif;">
+                        {{{ twolines players.[1] }}}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile and tablet only second score row -->
+
+            <div class="mobile tablet only row"
+              style="background-color: #e6e6e6;">
+                <div class="five wide center aligned squeezed column">
+                    <div class="ui tiny statistic">
+                        <div class="value">
+                            {{ status.score.[0] }}
+                        </div>
+                    </div>
+                </div>
+                <div class="six wide center aligned squeezed column">
+                    <div class="ui mini statistic">
+                        <div class="value">
+                            {{ status.frames.[0] }}
+                            <small>({{ frames }})</small>
+                            {{ status.frames.[1] }}
+                        </div>
+                        <div class="label">Frames</div>
+                    </div>
+                </div>
+                <div class="five wide center aligned squeezed column">
+                    <div class="ui tiny statistic">
+                        <div class="value">
+                            {{ status.score.[1] }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile and tablet only third score row -->
+
+            {{#if message_to_display}}
+            <div class="mobile tablet only row"
+              style="background-color: rgb(249, 250, 251);">
+                <!-- to keep the hight of the row -->
+                <div class="one wide center aligned squeezed column"
+                  style="visibility: hidden;">
+                    <div class="ui mini statistic">
+                        <div class="value">0</div>
+                        <div class="label">0</div>
+                    </div>
+                </div>
+                <div class="fourteen wide squeezed column">
+                    <div class="ui center aligned tiny grey header">
+                        {{ message }}
+                    </div>
+                </div>
+                <div class="one wide center aligned squeezed column">
+                </div>
+            </div>
+            {{else}}
+            <div class="mobile tablet only row"
+              style="background-color: rgb(249, 250, 251);">
+                <div class="five wide center aligned squeezed column"
+                  style="display: {{ playing1_display }};">
+                    <div class="ui mini statistic">
+                        <div class="value">
+                            {{ status.break_points }}
+                        </div>
+                        <div class="label">
+                            Break
+                        </div>
+                    </div>
+                </div>
+                <div class="eleven wide squeezed column"
+                  style="display: {{ playing1_display }};">
+                    <div class="ui center aligned micro grey header">
+                        {{ status.messages.[0] }} {{ status.messages.[1] }}
+                    </div>
+                </div>
+                <div class="eleven wide squeezed column"
+                  style="display: {{ playing2_display }};">
+                    <div class="ui center aligned micro grey header">
+                        {{ status.messages.[0] }} {{ status.messages.[1] }}
+                    </div>
+                </div>
+                <div class="five wide center aligned squeezed column"
+                  style="display: {{ playing2_display }};">
+                    <div class="ui mini statistic">
+                        <div class="value">
+                            {{ status.break_points }}
+                        </div>
+                        <div class="label">
+                            Break
+                        </div>
                     </div>
                 </div>
             </div>
@@ -440,7 +516,8 @@
             <div class="mobile only row">
                 <div class="ui center aligned grid">
                     <div class="sixteen wide column">
-                        <div class="ui four column equal width grid">
+                        <div class="ui four column equal width grid"
+                          style="margin: -28px">
                             <div class="column">
                                 <button id="red" class="ui circular massive red icon button" {{red_disabled}}>
                                     <i class="bullseye icon"></i>
@@ -464,7 +541,8 @@
                         </div>
                     </div>
                     <div class="twelve wide column">
-                        <div class="ui three column equal width grid">
+                        <div class="ui three column equal width grid"
+                          style="margin: -25px; margin-bottom: -20px; margin-top: -40px">
                             <div class="column">
                                 <button id="blue" class="ui circular massive blue icon button" {{blue_disabled}}>
                                     <i class="bullseye icon"></i>
@@ -484,83 +562,83 @@
                     </div>
                     <div class="sixteen wide column">
                         <div class="ui two column equal width grid">
-                            <div class="column">
-                                <div id="break-off" class="ui large fluid {{break_off_disabled}} button">
+                            <div class="column" style="margin: -12px">
+                                <div id="break-off" class="ui fluid {{break_off_disabled}} button">
                                     Break Off
                                 </div>
                             </div>
-                            <div class="column">
-                                <div id="end-break" class="ui large fluid {{end_break_disabled}} button">
+                            <div class="column" style="margin: -12px">
+                                <div id="end-break" class="ui fluid {{end_break_disabled}} button">
                                     End Break
                                 </div>
                             </div>
-                            <div class="column">
-                                <div id="red-lost" class="ui large fluid {{red_lost_disabled}} button">
+                            <div class="column" style="margin: -12px">
+                                <div id="red-lost" class="ui fluid {{red_lost_disabled}} button">
                                     Red Lost
                                 </div>
                             </div>
-                            <div class="column">
-                                <div id="re-rack" class="ui large fluid {{re_rack_disabled}} button">
+                            <div class="column" style="margin: -12px">
+                                <div id="re-rack" class="ui fluid {{re_rack_disabled}} button">
                                     Re-Rack
                                 </div>
                             </div>
-                            <div class="column">
-                                <div id="foul4" class="ui large fluid {{foul4_disabled}} button">
+                            <div class="column" style="margin: -12px">
+                                <div id="foul4" class="ui fluid {{foul4_disabled}} button">
                                     Foul 4
                                 </div>
                             </div>
-                            <div class="column">
-                                <div id="foul5" class="ui large fluid {{foul5_disabled}} button">
+                            <div class="column" style="margin: -12px">
+                                <div id="foul5" class="ui fluid {{foul5_disabled}} button">
                                     Foul 5
                                 </div>
                             </div>
-                            <div class="column">
-                                <div id="foul6" class="ui large fluid {{foul6_disabled}} button">
+                            <div class="column" style="margin: -12px">
+                                <div id="foul6" class="ui fluid {{foul6_disabled}} button">
                                     Foul 6
                                 </div>
                             </div>
-                            <div class="column">
-                                <div id="foul7" class="ui large fluid {{foul7_disabled}} button">
+                            <div class="column" style="margin: -12px">
+                                <div id="foul7" class="ui fluid {{foul7_disabled}} button">
                                     Foul 7
                                 </div>
                             </div>
-                            <div class="column">
-                                <div id="miss" class="ui large fluid {{miss_disabled}} button">
+                            <div class="column" style="margin: -12px">
+                                <div id="miss" class="ui fluid {{miss_disabled}} button">
                                     Miss
                                 </div>
                             </div>
-                            <div class="column">
-                                <div id="free-ball" class="ui large fluid {{free_ball_disabled}} button">
+                            <div class="column" style="margin: -12px">
+                                <div id="free-ball" class="ui fluid {{free_ball_disabled}} button">
                                     Free Ball
                                 </div>
                             </div>
-                            <div id="put-back" class="column">
-                                <div class="ui large fluid {{put_back_disabled}} button">
+                            <div id="put-back" class="column" style="margin: -12px">
+                                <div class="ui fluid {{put_back_disabled}} button">
                                     Put Back
                                 </div>
                             </div>
-                            <div class="column">
-                                <div id="play-again" class="ui large fluid {{play_again_disabled}} button">
+                            <div class="column" style="margin: -12px">
+                                <div id="play-again" class="ui fluid {{play_again_disabled}} button">
                                     Play Again
                                 </div>
                             </div>
-                            <div class="column">
-                                <div id="undo" class="ui large fluid {{undo_disabled}} button">
+                            <div class="column" style="margin: -12px">
+                                <div id="undo" class="ui fluid {{undo_disabled}} button">
                                     Undo
                                 </div>
                             </div>
-                            <div class="column">
-                                <div id="redo" class="ui large fluid {{redo_disabled}} button">
+                            <div class="column" style="margin: -12px">
+                                <div id="redo" class="ui fluid {{redo_disabled}} button">
                                     Redo
                                 </div>
                             </div>
-                            <div class="column">
-                                <div id="frame-won" class="ui large olive fluid {{frame_won_disabled}} button">
+                            <div class="column" style="margin: -12px">
+                                <div id="frame-won" class="ui olive fluid {{frame_won_disabled}} button">
                                     Frame Won
                                 </div>
                             </div>
-                            <div class="column">
-                                <div id="conceded" class="ui large orange fluid {{conceded_disabled}} button">
+                            <div class="column" style="margin: -12px">
+                                <div id="conceded" class="ui orange fluid {{conceded_disabled}} button">
                                     Conceded
                                 </div>
                             </div>

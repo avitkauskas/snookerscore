@@ -4,7 +4,7 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import { Matches } from '../../api/matches/matches.js';
 
-import {serializeJSON} from 'jquery-serializejson';
+import { serializeJSON } from 'jquery-serializejson';
 import moment from 'moment';
 
 

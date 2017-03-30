@@ -1,7 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { Template } from 'meteor/templating';
 
-import { Matches, isAdmin } from '../../api/matches/matches.js';
+import { Matches } from '../../api/matches/matches.js';
+import { isAdmin } from '../../api/utils.js';
 
 Template.List_matches_page.onCreated(function() {
   this.subscribe('matches');

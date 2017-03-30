@@ -1,7 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 
-import { Matches, isAdmin } from '../matches/matches.js';
+import { Matches } from '../matches/matches.js';
+import { isAdmin } from '../utils.js';
 
 export const StatusLog = new Mongo.Collection('StatusLog');
 
