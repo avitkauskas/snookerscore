@@ -443,6 +443,7 @@ Template.Score_match_page.events({
       // reset status
       s = INITIAL_STATUS;
       s.red = this.reds;
+      s.score = this.handicaps;
       // restore saved status items
       s.frames = frames;
       s.player_to_break = player_to_break;
@@ -834,6 +835,7 @@ Template.Score_match_page.events({
       // reset status
       s = INITIAL_STATUS;
       s.red = this.reds;
+      s.score = this.handicaps;
       // restore saved status items
       s.frames = frames;
       s.player_to_break = player_to_break;
@@ -857,6 +859,7 @@ Template.Score_match_page.events({
       // reset status
       s = INITIAL_STATUS;
       s.red = this.reds;
+      s.score = this.handicaps;
       // restore saved status items
       s.frames = frames;
       s.player_to_break = player_to_break;

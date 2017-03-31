@@ -50,16 +50,27 @@
             </div>
             <div class="two fields">
               <div class="field">
-                <label>Player 1</label>
+                <label>Player One</label>
                 <input type="text" name="players[]">
               </div>
               <div class="field">
-                <label>Player 2</label>
+                <label>Player Two</label>
                 <input type="text" name="players[]">
               </div>
             </div>
+            <div class="two fields">
+              <div class="field">
+                <label>Handicap for One</label>
+                <input type="text" name="handicaps[]" data-value-type="number">
+              </div>
+              <div class="field">
+                <label>Handicap for Two</label>
+                <input type="text" name="handicaps[]" data-value-type="number">
+              </div>
+            </div>
             <div class="ui center aligned basic segment">
-              <button id="create-button" class="ui big green fluid button" type="submit"><i class="save icon"></i>Create Match</button>
+              <button id="create-button" class="ui big green fluid button"
+                type="submit"><i class="save icon"></i>Create Match</button>
             </div>
           </form>
         </div>

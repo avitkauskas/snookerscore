@@ -53,27 +53,43 @@
             </div>
             <div class="two fields">
               <div class="field">
-                <label>Player 1</label>
+                <label>Player One</label>
                 <input type="text" name="players[]" value={{players.[0]}}>
               </div>
               <div class="field">
-                <label>Player 2</label>
+                <label>Player Two</label>
                 <input type="text" name="players[]" value={{players.[1]}}>
+              </div>
+            </div>
+            <div class="two fields">
+              <div class="field">
+                <label>Handicap for One</label>
+                <input type="text" name="handicaps[]" value={{handicaps.[0]}}
+                   data-value-type="number">
+              </div>
+              <div class="field">
+                <label>Handicap for Two</label>
+                <input type="text" name="handicaps[]" value={{handicaps.[1]}}
+                   data-value-type="number">
               </div>
             </div>
             <div class="ui grid">
               <div class="computer tablet only centered row">
                 <div class="ui center aligned basic segment">
-                  <button id="update-button" class="ui big green button" type="submit"><i class="save icon"></i>Update Match</button>
-                  <button id="delete-button" class="ui big red button"><i class="trash outline icon"></i>Delete Match</button>
+                  <button id="update-button" class="ui big green button"
+                    type="submit"><i class="save icon"></i>Update Match</button>
+                  <button id="delete-button"
+                    class="ui big red button"><i class="trash outline icon"></i>Delete Match</button>
                 </div>
               </div>
               <div class="mobile only centered two column stackable row">
                 <div class="column">
-                  <button id="update-button" class="ui big green fluid button" type="submit"><i class="save icon"></i>Update Match</button>
+                  <button id="update-button" class="ui big green fluid button"
+                    type="submit"><i class="save icon"></i>Update Match</button>
                 </div>
                 <div class="column">
-                  <button id="delete-button" class="ui big red fluid button"><i class="trash outline icon"></i>Delete Match</button>
+                  <button id="delete-button"
+                    class="ui big red fluid button"><i class="trash outline icon"></i>Delete Match</button>
                 </div>
               </div>
             </div>
