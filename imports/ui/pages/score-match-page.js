@@ -380,6 +380,7 @@ Template.Score_match_page.events({
     if (s.player_to_break === null) { // match did not start yet
       s.player_to_break = 0;
       s.player_at_the_table = 0;
+      s.score = this.handicaps;
       this.status = s;
       updateStatus(this);
     } else if (s.player_at_the_table === null) { // re-spotted black
@@ -394,6 +395,7 @@ Template.Score_match_page.events({
     if (s.player_to_break === null) { // match did not start yet
       s.player_to_break = 1;
       s.player_at_the_table = 1;
+      s.score = this.handicaps;
       this.status = s;
       updateStatus(this);
     } else if (s.player_at_the_table === null) { // re-spotted black
@@ -408,6 +410,7 @@ Template.Score_match_page.events({
     if (!s.frame_in_progress) {
       s.frame_in_progress = true;
       s.player_at_the_table ^= 1;
+      s.score = this.handicaps;
       this.status = s;
       updateStatus(this);
     }
