@@ -6,7 +6,7 @@ This is a web-based open source snooker scorekeeping (marking) application for r
 
 All you need to mark and display the score are two internet connected devices (TV, computer, tablet or mobile phone).
 
-Go to the free to use **[SnookerScore web site](http://snookerscore.vitkauskas.lt)** (or clone the depository and host the application on your own server if preferred), sign-up, create a match by entering it's place and title, the names of the players and the number of frames to play - and you are good to go.
+Go to the free to use **[SnookerScore web site](http://snookerscore.club)** (or clone the depository and host the application on your own server if preferred), sign-up, create a match by entering it's place and title, the names of the players and the number of frames to play - and you are good to go.
 
 Just open a **View** link of the match for score display on one device and click the **Mark** link on another device to start the marking of the match. As you mark the score on your device, the score is automatically updated on all the other devices displaying the score in real-time.
 
