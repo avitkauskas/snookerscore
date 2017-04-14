@@ -7,6 +7,7 @@ import { Matches } from '../../api/matches/matches.js';
 import { serializeJSON } from 'jquery-serializejson';
 import moment from 'moment';
 
+import { FORM_VALIDATION_RULES } from './form-validation-rules.js';
 
 Template.Edit_match_page.onCreated(function() {
   // this.autorun(() => {
@@ -50,7 +51,23 @@ Template.Edit_match_page.onRendered(function() {
       this.$("#countries").dropdown('set selected', match.country);
 
     }
-  })
+  });
+
+  // form validation
+  this.$('#update-form').form(
+    Object.assign(
+        {
+            onSuccess: (event, fields) => {
+                event.preventDefault();
+                const matchFields = this.$('#update-form').serializeJSON();
+                const id = FlowRouter.getParam("id");
+                Meteor.call('matches.update', id, matchFields);
+                FlowRouter.go('Home_page');
+            }
+        },
+        FORM_VALIDATION_RULES
+    )
+  );
 
   // focus on outer div to be able to catch ESC keydown
   this.$("#cancel-catcher").focus();
@@ -69,13 +86,13 @@ Template.Edit_match_page.helpers({
 
 Template.Edit_match_page.events({
 
-  'click #update-button'(event, template) {
-    event.preventDefault();
-    const matchFields = template.$('#update-form').serializeJSON();
-    const id = FlowRouter.getParam("id");
-    Meteor.call('matches.update', id, matchFields);
-    FlowRouter.go('Home_page');
-  },
+  // 'click #update-button'(event, template) {
+  //   event.preventDefault();
+  //   const matchFields = template.$('#update-form').serializeJSON();
+  //   const id = FlowRouter.getParam("id");
+  //   Meteor.call('matches.update', id, matchFields);
+  //   FlowRouter.go('Home_page');
+  // },
 
   'click #delete-button'(event, template) {
     event.preventDefault();

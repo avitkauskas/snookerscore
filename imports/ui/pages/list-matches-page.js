@@ -14,5 +14,8 @@ Template.List_matches_page.helpers({
   },
   isOwner(owner) {
     return owner === Meteor.userId() || isAdmin();
-  }
+  },
+  dash(text) {
+    return text == '' ? '' : '- ' + text;
+  },
 });

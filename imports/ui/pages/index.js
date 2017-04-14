@@ -13,6 +13,8 @@ import './edit-match-page.js';
 import './view-match-page.html';
 import './view-match-page.js';
 
+import './form-validation-rules.js';
+
 import './score-match-page.html';
 import './score-match-page.js';
 

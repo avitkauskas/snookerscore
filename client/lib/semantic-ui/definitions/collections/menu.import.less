@@ -1,6 +1,6 @@
 /*
   DO NOT MODIFY - This file has been generated and will be regenerated
-  Semantic UI v2.2.1
+  Semantic UI v2.2.6
 */
 /*
  * # Semantic - Menu
@@ -202,18 +202,6 @@
 }
 
 /*--------------
-     Popup
----------------*/
-
-.ui.menu .ui.popup {
-  display: none;
-}
-.ui.menu .ui.visible.popup {
-  display: block;
-}
-
-
-/*--------------
     Dropdowns
 ---------------*/
 
@@ -300,12 +288,17 @@
   margin-left: 1em;
 }
 .ui.vertical.menu .dropdown.item .menu {
-  top: 0% !important;
   left: 100%;
   min-width: 0;
   margin: 0em 0em 0em @dropdownMenuDistance;
   box-shadow: @dropdownVerticalMenuBoxShadow;
   border-radius: 0em @dropdownMenuBorderRadius @dropdownMenuBorderRadius @dropdownMenuBorderRadius;
+}
+.ui.vertical.menu .dropdown.item.upward .menu {
+  bottom: 0;
+}
+.ui.vertical.menu .dropdown.item:not(.upward) .menu {
+  top: 0;
 }
 .ui.vertical.menu .active.dropdown.item {
   border-top-right-radius: 0em;

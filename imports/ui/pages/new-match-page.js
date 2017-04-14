@@ -4,6 +4,8 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { serializeJSON } from 'jquery-serializejson';
 import moment from 'moment';
 
+import { FORM_VALIDATION_RULES } from './form-validation-rules.js';
+
 Template.New_match_page.onRendered(function() {
 
   this.$("#datetime").calendar({
@@ -23,18 +25,26 @@ Template.New_match_page.onRendered(function() {
   // initialize countries dropdown
   this.$("#countries").dropdown();
 
+  // form validation
+  this.$('#create-form').form(
+    Object.assign(
+        {
+            onSuccess: (event, fields) => {
+                event.preventDefault();
+                const match = this.$('#create-form').serializeJSON();
+                Meteor.call('matches.insert', match);
+                FlowRouter.go('Home_page');
+            }
+        },
+        FORM_VALIDATION_RULES
+    )
+  );
+
   // focus on outer div to be able to catch ESC keydown
   this.$("#cancel-catcher").focus();
 });
 
 Template.New_match_page.events({
-
-  'click #create-button'(event, template) {
-    event.preventDefault();
-    const match = template.$('#create-form').serializeJSON();
-    Meteor.call('matches.insert', match);
-    FlowRouter.go('Home_page');
-  },
 
   'keydown #cancel-catcher'(event, template) {
     if (event.keyCode == 27

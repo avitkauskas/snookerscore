@@ -54,22 +54,22 @@
             <div class="two fields">
               <div class="field">
                 <label>Player One</label>
-                <input type="text" name="players[]" value={{players.[0]}}>
+                <input id="player1" type="text" name="players[]" value={{players.[0]}}>
               </div>
               <div class="field">
                 <label>Player Two</label>
-                <input type="text" name="players[]" value={{players.[1]}}>
+                <input id="player2" type="text" name="players[]" value={{players.[1]}}>
               </div>
             </div>
             <div class="two fields">
               <div class="field">
                 <label>Handicap for One</label>
-                <input type="text" name="handicaps[]" value={{handicaps.[0]}}
+                <input id="handicap1" type="text" name="handicaps[]" value={{handicaps.[0]}}
                    data-value-type="number">
               </div>
               <div class="field">
                 <label>Handicap for Two</label>
-                <input type="text" name="handicaps[]" value={{handicaps.[1]}}
+                <input id="handicap2" type="text" name="handicaps[]" value={{handicaps.[1]}}
                    data-value-type="number">
               </div>
             </div>
@@ -98,12 +98,6 @@
 
       {{/div}}
       {{/with}}
-
-      <!-- {{#unless Template.subscriptionsReady}}
-          <div class="ui active inverted dimmer">
-            <div class="ui text loader">Loading</div>
-          </div>
-      {{/unless}} -->
 
     </div>
   </div>
