@@ -22,12 +22,6 @@ Template.Edit_match_page.onRendered(function() {
   this.autorun(() => {
     if (this.subscriptionsReady()) {
 
-      // check if the datetime was empty after render
-      let empty = false;
-      if (this.$("#datetime input").val() == '') {
-        empty = true;
-      }
-
       // setup the calendar dropdown
       this.$("#datetime").calendar({
         firstDayOfWeek: 1,
@@ -39,16 +33,13 @@ Template.Edit_match_page.onRendered(function() {
         },
       });
 
-      // reset the datetime field to empty if it was empty
-      // callendar set it to current time automatically if empty
-      if (empty) {
-        this.$("#datetime input").val('');
-      }
-
       // set countries dropdown to current country value
       const id = FlowRouter.getParam("id");
       const match = Matches.findOne(id) || {};
       this.$("#countries").dropdown('set selected', match.country);
+
+      // set calendar widget to current datetime value
+      $('#datetime').calendar('set date', match.datetime);
 
     }
   });

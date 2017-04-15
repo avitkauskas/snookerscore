@@ -18,10 +18,10 @@
                         <tr>
                       		<td>
                                 <i class="{{toLowerCase match.country}} flag"></i>
-                                <span style="white-space: nowrap;">{{match.country}},</span>
+                                <span style="white-space: nowrap;">{{countryname match.country}}{{comma_if match.city}}</span>
                                 <span style="white-space: nowrap;">{{match.city}}</span>
-                                <span style="white-space: nowrap;">{{dash match.venue}}</span>
-                                <span style="white-space: nowrap;">{{dash match.event}}</span>
+                                <span style="white-space: nowrap;">{{with_dash match.venue}}</span>
+                                <span style="white-space: nowrap;">{{with_dash match.event}}</span>
                             </td>
                       		<td class="center aligned">{{match.datetime}}</td>
                       		<td class="right aligned">{{match.players.[0]}}</td>
@@ -50,14 +50,13 @@
                         <tr class="center aligned">
                       		<td>
                                 <i class="{{toLowerCase match.country}} flag"></i>
-                                {{match.country}}, {{match.city}} -
-                                {{match.venue}}
+                                {{match.country}}{{comma_if match.city}} {{match.city}} {{with_dash match.venue}}
 
                             </td>
                             <td>
-                                {{match.event}}
+                                {{with_eta match.event}}
                                 <span style="white-space:nowrap">
-                                    @ {{match.datetime}}
+                                    {{match.datetime}}
                                 </span>
                             </td>
                             <td>

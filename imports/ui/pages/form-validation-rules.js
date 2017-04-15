@@ -14,10 +14,6 @@ export const FORM_VALIDATION_RULES =
         city: {
             rules: [
                 {
-                    type: 'empty',
-                    prompt: 'Please enter a city name'
-                },
-                {
                     type: 'maxLength[30]',
                     prompt: 'Cannot be longer than {ruleValue} characters'
                 }
@@ -43,6 +39,10 @@ export const FORM_VALIDATION_RULES =
             rules: [
                 {
                     type: 'empty',
+                    prompt: 'Please enter a date and time'
+                },
+                {
+                    type: 'not[Invalid date]',
                     prompt: 'Please enter a date and time'
                 }
             ]

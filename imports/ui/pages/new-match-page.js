@@ -8,19 +8,24 @@ import { FORM_VALIDATION_RULES } from './form-validation-rules.js';
 
 Template.New_match_page.onRendered(function() {
 
-  this.$("#datetime").calendar({
-    firstDayOfWeek: 1,
-    ampm: false,
-    formatter: {
-      datetime: function (date, settings) {
-        return moment(date).format('YYYY-MM-DD HH:mm');
-      }
-    }
-  });
+    $.get("https://api.instantcm.com/api/v1/geo-ip", (data) => {
+        this.$("#countries").dropdown('set selected', data.alpha2);
+    });
 
-  // reset the datetime field to empty
-  // callendar set it to current time automatically
-  this.$("#datetime input").val('');
+    this.$("#datetime").calendar({
+        firstDayOfWeek: 1,
+        ampm: false,
+        formatter: {
+            datetime: function (date, settings) {
+                return moment(date).format('YYYY-MM-DD HH:mm');
+            }
+        }
+    });
+
+    // set the datetime to the next round 10 minutes
+    let datetime = moment().add(10, 'minutes');
+    datetime.minutes(Math.floor(datetime.minutes() / 10) * 10);
+    $('#datetime').calendar('set date', datetime.format('YYYY-MM-DD HH:mm'));
 
   // initialize countries dropdown
   this.$("#countries").dropdown();

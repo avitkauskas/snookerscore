@@ -14,11 +14,13 @@ import './view-match-page.html';
 import './view-match-page.js';
 
 import './form-validation-rules.js';
+import './countries-codes.js';
 
 import './score-match-page.html';
 import './score-match-page.js';
 
 import './countries.html';
+import './countries.js';
 
 import './div.html';
 import './div.js';
