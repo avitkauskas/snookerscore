@@ -77,14 +77,6 @@ Template.Edit_match_page.helpers({
 
 Template.Edit_match_page.events({
 
-  // 'click #update-button'(event, template) {
-  //   event.preventDefault();
-  //   const matchFields = template.$('#update-form').serializeJSON();
-  //   const id = FlowRouter.getParam("id");
-  //   Meteor.call('matches.update', id, matchFields);
-  //   FlowRouter.go('Home_page');
-  // },
-
   'click #delete-button'(event, template) {
     event.preventDefault();
     template.$('.ui.modal')
