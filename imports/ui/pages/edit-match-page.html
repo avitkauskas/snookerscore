@@ -9,26 +9,28 @@
           <h2>Edit match data</h2>
           <div class="ui divider"></div>
           <form id="update-form" class="ui form">
-            <div class="two fields">
-              <div class="field">
-                <label>Country</label>
-                {{> countries }}
+              <div class="two fields">
+                <div class="field">
+                  <label>Player One</label>
+                  <input id="player1" type="text" name="players[]" value={{players.[0]}}>
+                </div>
+                <div class="field">
+                  <label>Player Two</label>
+                  <input id="player2" type="text" name="players[]" value={{players.[1]}}>
+                </div>
               </div>
-              <div class="field">
-                <label>City</label>
-                <input type="text" name="city" value={{city}}>
+              <div class="two fields">
+                <div class="field">
+                  <label>Handicap for One</label>
+                  <input id="handicap1" type="text" name="handicaps[]"
+                    value={{empty_if_zero handicaps.[0]}} data-value-type="number">
+                </div>
+                <div class="field">
+                  <label>Handicap for Two</label>
+                  <input id="handicap2" type="text" name="handicaps[]"
+                    value={{empty_if_zero handicaps.[1]}} data-value-type="number">
+                </div>
               </div>
-            </div>
-            <div class="two fields">
-              <div class="field">
-                <label>Venue</label>
-                <input type="text" name="venue" value={{venue}}>
-              </div>
-              <div class="field">
-                <label>Event</label>
-                <input type="text" name="event" value={{event}}>
-              </div>
-            </div>
             <div class="two fields">
               <div class="field">
                 <label>Date &amp; Time</label>
@@ -53,24 +55,22 @@
             </div>
             <div class="two fields">
               <div class="field">
-                <label>Player One</label>
-                <input id="player1" type="text" name="players[]" value={{players.[0]}}>
+                <label>Country</label>
+                {{> countries }}
               </div>
               <div class="field">
-                <label>Player Two</label>
-                <input id="player2" type="text" name="players[]" value={{players.[1]}}>
+                <label>City</label>
+                <input type="text" name="city" value={{city}}>
               </div>
             </div>
             <div class="two fields">
               <div class="field">
-                <label>Handicap for One</label>
-                <input id="handicap1" type="text" name="handicaps[]" value={{handicaps.[0]}}
-                   data-value-type="number">
+                <label>Venue</label>
+                <input type="text" name="venue" value={{venue}}>
               </div>
               <div class="field">
-                <label>Handicap for Two</label>
-                <input id="handicap2" type="text" name="handicaps[]" value={{handicaps.[1]}}
-                   data-value-type="number">
+                <label>Event</label>
+                <input type="text" name="event" value={{event}}>
               </div>
             </div>
             <div class="ui grid">

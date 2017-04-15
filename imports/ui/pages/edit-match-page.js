@@ -67,11 +67,14 @@ Template.Edit_match_page.onRendered(function() {
 
 
 Template.Edit_match_page.helpers({
-  match() {
-    const id = FlowRouter.getParam("id");
-    const match = Matches.findOne(id) || {};
-    return match;
-  }
+    match() {
+        const id = FlowRouter.getParam("id");
+        const match = Matches.findOne(id) || {};
+        return match;
+    },
+    empty_if_zero(value) {
+        return value == 0 ? '' : value;
+    }
 });
 
 

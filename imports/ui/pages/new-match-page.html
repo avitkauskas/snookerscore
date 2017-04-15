@@ -6,6 +6,48 @@
           <h2>Enter match data</h2>
           <div class="ui divider"></div>
           <form id="create-form" class="ui form">
+              <div class="two fields">
+                <div class="field">
+                  <label>Player One</label>
+                  <input id="player1" type="text" name="players[]">
+                </div>
+                <div class="field">
+                  <label>Player Two</label>
+                  <input id="player2" type="text" name="players[]">
+                </div>
+              </div>
+              <div class="two fields">
+                <div class="field">
+                  <label>Handicap for One</label>
+                  <input id="handicap1" type="text" name="handicaps[]" data-value-type="number">
+                </div>
+                <div class="field">
+                  <label>Handicap for Two</label>
+                  <input id="handicap2" type="text" name="handicaps[]" data-value-type="number">
+                </div>
+              </div>
+              <div class="two fields">
+                <div class="field">
+                  <label>Date &amp; Time</label>
+                  <div class="ui calendar" id="datetime">
+                     <input type="text" name="datetime">
+                  </div>
+                </div>
+                <div class="field">
+                    <div class="two fields">
+                      <div class="field">
+                        <label>Frames</label>
+                        <input type="text" name="frames" value="3"
+                            data-value-type="number">
+                      </div>
+                      <div class="field">
+                        <label>Reds</label>
+                        <input type="text" name="reds" value="15"
+                            data-value-type="number">
+                      </div>
+                    </div>
+                </div>
+              </div>
             <div class="two fields">
               <div class="field">
                 <label>Country</label>
@@ -24,48 +66,6 @@
               <div class="field">
                 <label>Event</label>
                 <input type="text" name="event">
-              </div>
-            </div>
-            <div class="two fields">
-              <div class="field">
-                <label>Date &amp; Time</label>
-                <div class="ui calendar" id="datetime">
-                  <input type="text" name="datetime">
-                </div>
-              </div>
-              <div class="field">
-                  <div class="two fields">
-                    <div class="field">
-                      <label>Frames</label>
-                      <input type="text" name="frames" value="3"
-                        data-value-type="number">
-                    </div>
-                    <div class="field">
-                      <label>Reds</label>
-                      <input type="text" name="reds" value="15"
-                          data-value-type="number">
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div class="two fields">
-              <div class="field">
-                <label>Player One</label>
-                <input id="player1" type="text" name="players[]">
-              </div>
-              <div class="field">
-                <label>Player Two</label>
-                <input id="player2" type="text" name="players[]">
-              </div>
-            </div>
-            <div class="two fields">
-              <div class="field">
-                <label>Handicap for One</label>
-                <input id="handicap1" type="text" name="handicaps[]" data-value-type="number">
-              </div>
-              <div class="field">
-                <label>Handicap for Two</label>
-                <input id="handicap2" type="text" name="handicaps[]" data-value-type="number">
               </div>
             </div>
             <div class="ui center aligned basic segment">

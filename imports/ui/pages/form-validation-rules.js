@@ -1,7 +1,6 @@
 export const FORM_VALIDATION_RULES =
 {
     inline: true,
-    on: 'change',
     fields: {
         country: {
             rules: [
@@ -78,7 +77,7 @@ export const FORM_VALIDATION_RULES =
                   prompt: 'Please enter a name of a player'
               },
               {
-                  type: 'maxLength[25]',
+                  type: 'maxLength[30]',
                   prompt: 'Cannot be longer than {ruleValue} characters'
               }
             ]
@@ -90,7 +89,7 @@ export const FORM_VALIDATION_RULES =
                   prompt: 'Please enter a name of a player'
               },
               {
-                  type: 'maxLength[25]',
+                  type: 'maxLength[30]',
                   prompt: 'Cannot be longer than {ruleValue} characters'
               }
             ]
