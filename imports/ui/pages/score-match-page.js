@@ -201,6 +201,27 @@ Template.Score_match_page.helpers({
     return '';
   },
 
+  break_off_text() {
+    let s = this.status;
+      if (!s ||
+          s.player_to_break === null ||
+          s.player_at_the_table === null ||
+          s.frame_in_progress ||
+          s.frames[0] >= (this.frames + 1) / 2 ||
+          s.frames[1] >= (this.frames + 1) / 2) {
+
+          let phrase = '';
+          if (s.red > 1) {
+            phrase = s.red + ' Red';
+          } else {
+            phrase = 'No Red';
+          }
+
+          return phrase;
+      }
+      return 'Break Off';
+  },
+
   end_break_disabled() {
     let s = this.status;
     if (!s ||
