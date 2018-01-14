@@ -212,9 +212,11 @@ Template.Score_match_page.helpers({
 
           let phrase = '';
           if (s.red > 1) {
+            phrase = s.red + ' Reds';
+          } else if (s.red === 1) {
             phrase = s.red + ' Red';
           } else {
-            phrase = 'No Red';
+            phrase = 'No Reds';
           }
 
           return phrase;
