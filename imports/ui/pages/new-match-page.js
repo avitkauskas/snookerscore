@@ -8,9 +8,13 @@ import { FORM_VALIDATION_RULES } from './form-validation-rules.js';
 
 Template.New_match_page.onRendered(function() {
 
-    $.get("https://api.instantcm.com/api/v1/geo-ip", (data) => {
-        this.$("#countries").dropdown('set selected', data.alpha2);
+    $.get("https://freegeoip.app/json/", (data) => {
+      this.$("#countries").dropdown('set selected', data.country_code);
     });
+
+    // $.get("https://api.instantcm.com/api/v1/geo-ip", (data) => {
+    //     this.$("#countries").dropdown('set selected', data.alpha2);
+    // });
 
     this.$("#datetime").calendar({
         firstDayOfWeek: 1,
