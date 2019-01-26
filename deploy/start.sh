@@ -24,9 +24,10 @@ else
   KEYARG=
 fi
 
-run meteor bundle package.tar.gz
-run scp $KEYARG package.tar.gz $SERVER:$APP_DIR/
+run meteor build ../snookerscore_build --server-only --architecture os.linux.x86_64
+run scp $KEYARG ../snookerscore_build/snookerscore.tar.gz $SERVER:$APP_DIR/
 run scp $KEYARG deploy/remote.sh $SERVER:$REMOTE_SCRIPT_PATH
+rm -rf ../snookerscore_build
 echo
 echo "---- Running deployment script on remote server ----"
 run ssh $KEYARG $SERVER bash $REMOTE_SCRIPT_PATH
