@@ -6,16 +6,16 @@ import { Matches, INITIAL_STATUS } from '../../api/matches/matches.js';
 import { StatusLog } from '../../api/statuslog/statuslog.js';
 
 
-Template.Score_match_page.onCreated(function() {
+Template.Score_match_page.onCreated(function () {
   // this.autorun(() => {
-    const id = FlowRouter.getParam('id');
-    this.subscribe('one_match', id);
-    this.subscribe('statuslog', id);
+  const id = FlowRouter.getParam('id');
+  this.subscribe('one_match', id);
+  this.subscribe('statuslog', id);
   // });
 });
 
 
-Template.Score_match_page.onRendered(function() {
+Template.Score_match_page.onRendered(function () {
   // focus on outer div to catch keyboard events
   this.$("#key-catcher").focus();
 });
@@ -34,7 +34,7 @@ Template.Score_match_page.helpers({
       this.message = "Please click the name of the player to break in the first frame (or press 1 or 2 on the keyboard)";
       return true;
     } else if (s.frames[0] >= (this.frames + 1) / 2 ||
-               s.frames[1] >= (this.frames + 1) / 2) { // match finished
+      s.frames[1] >= (this.frames + 1) / 2) { // match finished
       let winner = (s.frames[0] > s.frames[1]) ? this.players[0] : this.players[1];
       this.message = "Match - " + winner;
       return true;
@@ -103,9 +103,9 @@ Template.Score_match_page.helpers({
   red_disabled() {
     let s = this.status;
     if (!s ||
-        !s.frame_in_progress ||
-        s.player_at_the_table === null ||
-        s.red < 1) {
+      !s.frame_in_progress ||
+      s.player_at_the_table === null ||
+      s.red < 1) {
       return 'disabled';
     }
     return '';
@@ -114,10 +114,10 @@ Template.Score_match_page.helpers({
   yellow_disabled() {
     let s = this.status;
     if (!s ||
-        !s.frame_in_progress ||
-        s.player_at_the_table === null ||
-        !s.on_colour && !s.free_ball ||
-        s.yellow < 1) {
+      !s.frame_in_progress ||
+      s.player_at_the_table === null ||
+      !s.on_colour && !s.free_ball ||
+      s.yellow < 1) {
       return 'disabled';
     }
     return '';
@@ -126,11 +126,11 @@ Template.Score_match_page.helpers({
   green_disabled() {
     let s = this.status;
     if (!s ||
-        !s.frame_in_progress ||
-        s.player_at_the_table === null ||
-        !s.on_colour && !s.free_ball ||
-        s.colours_only && s.yellow > 0 && !s.free_ball ||
-        s.green < 1) {
+      !s.frame_in_progress ||
+      s.player_at_the_table === null ||
+      !s.on_colour && !s.free_ball ||
+      s.colours_only && s.yellow > 0 && !s.free_ball ||
+      s.green < 1) {
       return 'disabled';
     }
     return '';
@@ -139,11 +139,11 @@ Template.Score_match_page.helpers({
   brown_disabled() {
     let s = this.status;
     if (!s ||
-        !s.frame_in_progress ||
-        s.player_at_the_table === null ||
-        !s.on_colour && !s.free_ball ||
-        s.colours_only && s.green > 0 && !s.free_ball ||
-        s.brown < 1) {
+      !s.frame_in_progress ||
+      s.player_at_the_table === null ||
+      !s.on_colour && !s.free_ball ||
+      s.colours_only && s.green > 0 && !s.free_ball ||
+      s.brown < 1) {
       return 'disabled';
     }
     return '';
@@ -152,11 +152,11 @@ Template.Score_match_page.helpers({
   blue_disabled() {
     let s = this.status;
     if (!s ||
-        !s.frame_in_progress ||
-        s.player_at_the_table === null ||
-        !s.on_colour && !s.free_ball ||
-        s.colours_only && s.brown > 0 && !s.free_ball ||
-        s.blue < 1) {
+      !s.frame_in_progress ||
+      s.player_at_the_table === null ||
+      !s.on_colour && !s.free_ball ||
+      s.colours_only && s.brown > 0 && !s.free_ball ||
+      s.blue < 1) {
       return 'disabled';
     }
     return '';
@@ -165,11 +165,11 @@ Template.Score_match_page.helpers({
   pink_disabled() {
     let s = this.status;
     if (!s ||
-        !s.frame_in_progress ||
-        s.player_at_the_table === null ||
-        !s.on_colour && !s.free_ball ||
-        s.colours_only && s.blue > 0 && !s.free_ball ||
-        s.pink < 1) {
+      !s.frame_in_progress ||
+      s.player_at_the_table === null ||
+      !s.on_colour && !s.free_ball ||
+      s.colours_only && s.blue > 0 && !s.free_ball ||
+      s.pink < 1) {
       return 'disabled';
     }
     return '';
@@ -178,11 +178,11 @@ Template.Score_match_page.helpers({
   black_disabled() {
     let s = this.status;
     if (!s ||
-        !s.frame_in_progress ||
-        s.player_at_the_table === null ||
-        !s.on_colour && !s.free_ball ||
-        s.colours_only && s.pink > 0 && !s.free_ball ||
-        s.black < 1) {
+      !s.frame_in_progress ||
+      s.player_at_the_table === null ||
+      !s.on_colour && !s.free_ball ||
+      s.colours_only && s.pink > 0 && !s.free_ball ||
+      s.black < 1) {
       return 'disabled';
     }
     return '';
@@ -191,11 +191,11 @@ Template.Score_match_page.helpers({
   break_off_disabled() {
     let s = this.status;
     if (!s ||
-        s.player_to_break === null ||
-        s.player_at_the_table === null ||
-        s.frame_in_progress ||
-        s.frames[0] >= (this.frames + 1) / 2 ||
-        s.frames[1] >= (this.frames + 1) / 2) {
+      s.player_to_break === null ||
+      s.player_at_the_table === null ||
+      s.frame_in_progress ||
+      s.frames[0] >= (this.frames + 1) / 2 ||
+      s.frames[1] >= (this.frames + 1) / 2) {
       return 'disabled';
     }
     return '';
@@ -203,33 +203,33 @@ Template.Score_match_page.helpers({
 
   break_off_text() {
     let s = this.status;
-      if (!s ||
-          s.player_to_break === null ||
-          s.player_at_the_table === null ||
-          s.frame_in_progress ||
-          s.frames[0] >= (this.frames + 1) / 2 ||
-          s.frames[1] >= (this.frames + 1) / 2) {
+    if (!s ||
+      s.player_to_break === null ||
+      s.player_at_the_table === null ||
+      s.frame_in_progress ||
+      s.frames[0] >= (this.frames + 1) / 2 ||
+      s.frames[1] >= (this.frames + 1) / 2) {
 
-          let phrase = '';
-          if (s.red > 1) {
-            phrase = s.red + ' Reds';
-          } else if (s.red === 1) {
-            phrase = s.red + ' Red';
-          } else {
-            phrase = 'No Reds';
-          }
-
-          return phrase;
+      let phrase = '';
+      if (s.red > 1) {
+        phrase = s.red + ' Reds';
+      } else if (s.red === 1) {
+        phrase = s.red + ' Red';
+      } else {
+        phrase = 'No Reds';
       }
-      return 'Break Off';
+
+      return phrase;
+    }
+    return 'Break Off';
   },
 
   end_break_disabled() {
     let s = this.status;
     if (!s ||
-        !s.frame_in_progress ||
-        s.player_at_the_table === null ||
-        s.black < 1) {
+      !s.frame_in_progress ||
+      s.player_at_the_table === null ||
+      s.black < 1) {
       return 'disabled';
     }
     return '';
@@ -238,11 +238,11 @@ Template.Score_match_page.helpers({
   red_lost_disabled() {
     let s = this.status;
     if (!s ||
-        !s.foul ||
-        !s.frame_in_progress ||
-        s.player_at_the_table === null ||
-        s.red < 1 ||
-        s.black < 1) {
+      !s.foul ||
+      !s.frame_in_progress ||
+      s.player_at_the_table === null ||
+      s.red < 1 ||
+      s.black < 1) {
       return 'disabled';
     }
     return '';
@@ -251,9 +251,9 @@ Template.Score_match_page.helpers({
   re_rack_disabled() {
     let s = this.status;
     if (!s ||
-        !s.frame_in_progress ||
-        s.player_at_the_table === null ||
-        s.black < 1) {
+      !s.frame_in_progress ||
+      s.player_at_the_table === null ||
+      s.black < 1) {
       return 'disabled';
     }
     return '';
@@ -262,9 +262,9 @@ Template.Score_match_page.helpers({
   foul4_disabled() {
     let s = this.status;
     if (!s ||
-        !s.frame_in_progress ||
-        s.player_at_the_table === null ||
-        s.brown < 1) {
+      !s.frame_in_progress ||
+      s.player_at_the_table === null ||
+      s.brown < 1) {
       return 'disabled';
     }
     return '';
@@ -273,9 +273,9 @@ Template.Score_match_page.helpers({
   foul5_disabled() {
     let s = this.status;
     if (!s ||
-        !s.frame_in_progress ||
-        s.player_at_the_table === null ||
-        s.blue < 1) {
+      !s.frame_in_progress ||
+      s.player_at_the_table === null ||
+      s.blue < 1) {
       return 'disabled';
     }
     return '';
@@ -284,9 +284,9 @@ Template.Score_match_page.helpers({
   foul6_disabled() {
     let s = this.status;
     if (!s ||
-        !s.frame_in_progress ||
-        s.player_at_the_table === null ||
-        s.pink < 1) {
+      !s.frame_in_progress ||
+      s.player_at_the_table === null ||
+      s.pink < 1) {
       return 'disabled';
     }
     return '';
@@ -295,9 +295,9 @@ Template.Score_match_page.helpers({
   foul7_disabled() {
     let s = this.status;
     if (!s ||
-        !s.frame_in_progress ||
-        s.player_at_the_table === null ||
-        s.black < 1) {
+      !s.frame_in_progress ||
+      s.player_at_the_table === null ||
+      s.black < 1) {
       return 'disabled';
     }
     return '';
@@ -306,10 +306,10 @@ Template.Score_match_page.helpers({
   miss_disabled() {
     let s = this.status;
     if (!s ||
-        !s.frame_in_progress ||
-        s.player_at_the_table === null ||
-        !s.foul ||
-        s.miss) {
+      !s.frame_in_progress ||
+      s.player_at_the_table === null ||
+      !s.foul ||
+      s.miss) {
       return 'disabled';
     }
     return '';
@@ -318,11 +318,11 @@ Template.Score_match_page.helpers({
   free_ball_disabled() {
     let s = this.status;
     if (!s ||
-        !s.frame_in_progress ||
-        s.player_at_the_table === null ||
-        !s.foul ||
-        s.pink < 1 ||
-        s.free_ball) {
+      !s.frame_in_progress ||
+      s.player_at_the_table === null ||
+      !s.foul ||
+      s.pink < 1 ||
+      s.free_ball) {
       return 'disabled';
     }
     return '';
@@ -331,10 +331,10 @@ Template.Score_match_page.helpers({
   put_back_disabled() {
     let s = this.status;
     if (!s ||
-        !s.frame_in_progress ||
-        s.player_at_the_table === null ||
-        !s.foul ||
-        !s.miss) {
+      !s.frame_in_progress ||
+      s.player_at_the_table === null ||
+      !s.foul ||
+      !s.miss) {
       return 'disabled';
     }
     return '';
@@ -343,9 +343,9 @@ Template.Score_match_page.helpers({
   play_again_disabled() {
     let s = this.status;
     if (!s ||
-        !s.frame_in_progress ||
-        s.player_at_the_table === null ||
-        !s.foul) {
+      !s.frame_in_progress ||
+      s.player_at_the_table === null ||
+      !s.foul) {
       return 'disabled';
     }
     return '';
@@ -354,8 +354,8 @@ Template.Score_match_page.helpers({
   frame_won_disabled() {
     let s = this.status;
     if (!s ||
-        !s.frame_in_progress ||
-        s.player_at_the_table === null) {
+      !s.frame_in_progress ||
+      s.player_at_the_table === null) {
       return 'disabled';
     }
     return '';
@@ -364,8 +364,8 @@ Template.Score_match_page.helpers({
   conceded_disabled() {
     let s = this.status;
     if (!s ||
-        !s.frame_in_progress ||
-        s.player_at_the_table === null) {
+      !s.frame_in_progress ||
+      s.player_at_the_table === null) {
       return 'disabled';
     }
     return '';
@@ -374,7 +374,7 @@ Template.Score_match_page.helpers({
   undo_disabled() {
     let s = this.status;
     if (!s ||
-        this.status_seq < 1) {
+      this.status_seq < 1) {
       return 'disabled';
     }
     return '';
@@ -383,7 +383,7 @@ Template.Score_match_page.helpers({
   redo_disabled() {
     let s = this.status;
     if (!s ||
-        this.status_seq == this.status_max) {
+      this.status_seq == this.status_max) {
       return 'disabled';
     }
     return '';
@@ -866,7 +866,7 @@ Template.Score_match_page.events({
       s.frames = frames;
       s.player_to_break = player_to_break;
       if (s.frames[0] < (this.frames + 1) / 2 &&  // match is not finished yet
-          s.frames[1] < (this.frames + 1) / 2) {
+        s.frames[1] < (this.frames + 1) / 2) {
         s.player_at_the_table = player_to_break;
       }
       this.status = s;
@@ -890,7 +890,7 @@ Template.Score_match_page.events({
       s.frames = frames;
       s.player_to_break = player_to_break;
       if (s.frames[0] < (this.frames + 1) / 2 &&  // match is not finished yet
-          s.frames[1] < (this.frames + 1) / 2) {
+        s.frames[1] < (this.frames + 1) / 2) {
         s.player_at_the_table = player_to_break;
       }
       this.status = s;
@@ -901,18 +901,18 @@ Template.Score_match_page.events({
   'click #undo'(event, template) {
     if (this.status_seq > 0) {
       const seq = this.status_seq - 1;
-      statusLog = StatusLog.findOne({match_id: this._id, status_seq: seq});
+      statusLog = StatusLog.findOne({ match_id: this._id, status_seq: seq });
       if (!statusLog) throw new Meteor.Error('Could not find status log');
-      Meteor.call('matches.update', this._id, {status_seq: seq, status: statusLog.status});
+      Meteor.call('matches.update', this._id, { status_seq: seq, status: statusLog.status });
     }
   },
 
   'click #redo'(event, template) {
     if (this.status_seq < this.status_max) {
       const seq = this.status_seq + 1;
-      statusLog = StatusLog.findOne({match_id: this._id, status_seq: seq});
+      statusLog = StatusLog.findOne({ match_id: this._id, status_seq: seq });
       if (!statusLog) throw new Meteor.Error('Could not find status log');
-      Meteor.call('matches.update', this._id, {status_seq: seq, status: statusLog.status});
+      Meteor.call('matches.update', this._id, { status_seq: seq, status: statusLog.status });
     }
   },
 
@@ -923,7 +923,7 @@ Template.Score_match_page.events({
         break;
       case 49: // 1
         if (this.status.player_to_break === null ||
-            this.status.player_at_the_table === null) {
+          this.status.player_at_the_table === null) {
           template.$('#player1').click();
         } else {
           template.$('#red').click();
@@ -931,7 +931,7 @@ Template.Score_match_page.events({
         break;
       case 50: // 2
         if (this.status.player_to_break === null ||
-            this.status.player_at_the_table === null) {
+          this.status.player_at_the_table === null) {
           template.$('#player2').click();
         } else {
           template.$('#yellow').click();
@@ -1041,6 +1041,6 @@ function ballOnValue(status) {
 // helper function to update status of the match and status log
 function updateStatus(match) {
   const seq = match.status_seq + 1;
-  Meteor.call('matches.update', match._id, {status_seq: seq, status_max: seq, status: match.status});
-  Meteor.call('statuslog.upsert', match._id, seq, {status: match.status});
+  Meteor.call('matches.update', match._id, { status_seq: seq, status_max: seq, status: match.status });
+  Meteor.call('statuslog.upsert', match._id, seq, { status: match.status });
 };
